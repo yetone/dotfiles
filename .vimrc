@@ -89,10 +89,6 @@ ActivateAddons github:dag/vim2hs
 
 " }}}
 
-" virtualenv Setup {{{
-"au GUIEnter * exec 'VirtualEnvActivate default'
-" }}}
-
 " Limit popup menu height {{{
 set pumheight=30
 " }}}
@@ -118,6 +114,7 @@ endif
 " }}}
 
 " Colorscheme {{{
+hi! link Conceal Normal
 set bg=dark
 let g:gruvbox_invert_selection=0
 "colors peaksea
@@ -135,8 +132,6 @@ endif
 " }}}
 
 " format.vim Setup {{{
-"let g:format_HTMLAdditionalCSS = '@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);' .
-"            \' body { font-family: "Droid Sans Mono"; font-size:10pt; -webkit-font-smoothing: antialiased; }'
 let g:format_HTMLAdditionalCSS = 'body { font-size:10pt; -webkit-font-smoothing: antialiased; }'
 " }}}
 
@@ -248,6 +243,10 @@ au FileType go set noexpandtab
 " Haskell
 let g:hpaste_author = 'Francisco Lopes'
 let g:syntastic_haskell_ghc_mod_args = '-g-fno-warn-type-defaults'
+
+" Ruby
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
 " }}}
 
 " SingleCompile Setup {{{
@@ -358,5 +357,3 @@ command! -range=% Blocks
 exec 'hi! OverLength ' . s:getbg('Visual')
 match OverLength /\%81v.\+/
 " }}}
-
-hi! link Conceal Normal
