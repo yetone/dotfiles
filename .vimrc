@@ -17,7 +17,7 @@ set clipboard=unnamed          " for simplified clipboard copy/paste"
 set backspace=indent,eol,start " no constraints for backspace
 set laststatus=2               " always display the statusline in all windows
 set noshowmode                 " hide the default mode text (e.g. -- INSERT -- below the statusline)
-set sessionoptions=blank,buffers,curdir,help,tabpages,winsize  " discards plugin stuff on saving session
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winpos,winsize  " discards plugin stuff on saving session
 
 set wildignore+=CMakeFiles     " add ignored extension
 set wildignore+=*.pyc          " add ignored extension
@@ -41,6 +41,7 @@ ActivateAddons hg:http://hg.code.sf.net/p/formatvim/code
 ActivateAddons github:octol/vim-cpp-enhanced-highlight
 ActivateAddons github:pbrisbin/vim-syntax-shakespeare
 ActivateAddons hg:https://bitbucket.org/ZyX_I/frawor
+ActivateAddons github:vim-pandoc/vim-pandoc-syntax
 ActivateAddons github:Twinside/vim-haskellConceal
 ActivateAddons github:guns/xterm-color-table.vim
 ActivateAddons github:idris-hackers/idris-vim
@@ -48,6 +49,7 @@ ActivateAddons github:flazz/vim-colorschemes
 ActivateAddons github:rhysd/vim-clang-format
 ActivateAddons github:oblitum/YouCompleteMe
 ActivateAddons github:embear/vim-localvimrc
+ActivateAddons github:vim-pandoc/vim-pandoc
 ActivateAddons github:Raimondi/delimitMate
 ActivateAddons github:scrooloose/syntastic
 ActivateAddons github:xuhdev/SingleCompile
@@ -67,6 +69,7 @@ ActivateAddons github:tpope/vim-abolish
 ActivateAddons github:peterhoeg/vim-qml
 "ActivateAddons github:gilligan/vim-lldb
 ActivateAddons github:bling/vim-airline
+ActivateAddons github:rizzatti/dash.vim
 ActivateAddons github:tpope/vim-eunuch
 ActivateAddons github:SirVer/ultisnips
 ActivateAddons github:ujihisa/neco-ghc
@@ -187,7 +190,8 @@ exec 'hi! SyntasticWarning ' . s:getbg('SyntasticWarningLine')
 " }}}
 
 " Rainbow Colors Improved Setup {{{
-let g:rainbow_ctermfgs = ['10', '3', '13', '6', '15']
+" let g:rainbow_ctermfgs = ['10', '3', '13', '6', '15']
+let g:rainbow_ctermfgs = ['3']
 au FileType c,cpp,objc,objcpp,go,rust,python,ruby,javascript,java,vim call rainbow#load()
 au FileType clojure call rainbow#load( [['(', ')'], ['\[', '\]'], ['{', '}']], '"[-+*/=><%^&$#@!~|:?\\]"')
 " }}}
@@ -237,16 +241,18 @@ au BufNewFile,BufRead *
 
 " Go
 let g:godef_split = 0
-let g:go_fmt_autosave = 0
 au FileType go set noexpandtab
 
 " Haskell
 let g:hpaste_author = 'Francisco Lopes'
-let g:syntastic_haskell_ghc_mod_args = '-g-fno-warn-type-defaults'
+let g:syntastic_haskell_ghc_mod_args = '-g-fno-warn-type-defaults -g-fno-warn-missing-signatures'
 
 " Ruby
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
+
+" Rust
+let g:racer_cmd = "/opt/src/racer/bin/racer"
 " }}}
 
 " SingleCompile Setup {{{
@@ -263,7 +269,7 @@ call SingleCompile#SetCompilerTemplate('cpp',
             \'clang',
             \'the Clang C and Objective-C compiler',
             \'clang++',
-            \'-o $(FILE_TITLE)$ -g -O0 -std=c++1y -stdlib=libc++ -lpthread',
+            \'-o $(FILE_TITLE)$ -g -O0 -std=c++1z -lpthread',
             \'./$(FILE_TITLE)$')
 
 call SingleCompile#ChooseCompiler('cpp', 'clang')
@@ -326,12 +332,17 @@ nnoremap <leader>P :call FancyPaste('+')<cr>
 
 " ClangFormat Setup {{{
 let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "DerivePointerBinding" : "false",
-            \ "PointerBindsToType" : "false",
-            \ "Standard" : "C++11" }
+            \ "AccessModifierOffset": -4,
+            \ "AllowShortLoopsOnASingleLine": "false",
+            \ "AllowShortBlocksOnASingleLine" : "false",
+            \ "AllowShortFunctionsOnASingleLine": "None",
+            \ "AllowShortIfStatementsOnASingleLine": "false",
+            \ "AlwaysBreakTemplateDeclarations": "true",
+            \ "DerivePointerBinding": "false",
+            \ "PointerBindsToType": "false",
+            \ "UseTab": "ForIndentation",
+            \ "TabWidth": "4",
+            \ "Standard": "C++11" }
 au FileType c,cpp,objc,objcpp noremap  <silent> <buffer> <leader>f :ClangFormat<cr>
 au FileType c,cpp,objc,objcpp noremap! <silent> <buffer> <leader>f <c-o>:ClangFormat<cr>
 " }}}
