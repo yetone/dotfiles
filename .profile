@@ -11,7 +11,12 @@ fi
 PATH=$(brew --prefix python)/bin:$PATH
 PATH=$(brew --prefix ruby)/bin:$PATH
 PATH=$(brew --prefix node)/bin:$PATH
+export CPATH=/opt/local/include
+export RUST_SRC_PATH=/Library/Caches/Homebrew/rust--git/src
 export GHC_DOT_APP="/Applications/Glasgow Haskell.app"
+
+export DYLD_LIBRARY_PATH=/opt/local/lib:/usr/local/lib/rustlib/x86_64-apple-darwin/lib
+
 if [ -d "$GHC_DOT_APP" ]; then PATH=$GHC_DOT_APP/Contents/bin:$PATH; fi
 if [ -d "$HOME/.cabal/bin" ]; then PATH=$HOME/.cabal/bin:$PATH; fi
 if [ -d "$HOME/.go" ]; then export GOPATH=$HOME/.go; fi

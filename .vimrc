@@ -39,11 +39,13 @@ ActivateAddons git:git://gitorious.org/vim-for-qt-kde/vim-qmake.git
 ActivateAddons github:biskark/vim-ultimate-colorscheme-utility
 ActivateAddons hg:http://hg.code.sf.net/p/formatvim/code
 ActivateAddons github:octol/vim-cpp-enhanced-highlight
+ActivateAddons github:Valloric/vim-operator-highlight
 ActivateAddons github:pbrisbin/vim-syntax-shakespeare
 ActivateAddons hg:https://bitbucket.org/ZyX_I/frawor
 ActivateAddons github:vim-pandoc/vim-pandoc-syntax
 ActivateAddons github:Twinside/vim-haskellConceal
 ActivateAddons github:guns/xterm-color-table.vim
+ActivateAddons github:zerowidth/vim-copy-as-rtf
 ActivateAddons github:idris-hackers/idris-vim
 ActivateAddons github:flazz/vim-colorschemes
 ActivateAddons github:rhysd/vim-clang-format
@@ -70,12 +72,12 @@ ActivateAddons github:peterhoeg/vim-qml
 "ActivateAddons github:gilligan/vim-lldb
 ActivateAddons github:bling/vim-airline
 ActivateAddons github:rizzatti/dash.vim
+"ActivateAddons github:jeaye/color_coded
 ActivateAddons github:tpope/vim-eunuch
 ActivateAddons github:SirVer/ultisnips
 ActivateAddons github:ujihisa/neco-ghc
 ActivateAddons github:mattn/webapi-vim
 ActivateAddons github:mileszs/ack.vim
-ActivateAddons github:oblitum/rainbow
 ActivateAddons github:oblitum/bufkill
 ActivateAddons github:morhetz/gruvbox
 ActivateAddons github:vim-jp/cpp-vim
@@ -103,7 +105,7 @@ au FileType qf wincmd J
 " GUI Settings {{{
 if has('gui_running')
     " Set default GUI font
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline:h13
+    set guifont=monofur\ for\ Powerline:h17
 
     " Remove scroll bars
     set guioptions-=L
@@ -122,6 +124,7 @@ set bg=dark
 let g:gruvbox_invert_selection=0
 "colors peaksea
 colors gruvbox
+"colors wombat256mod
 " }}}
 
 " Fix borders of fullscreen GUI {{{
@@ -139,9 +142,9 @@ let g:format_HTMLAdditionalCSS = 'body { font-size:10pt; -webkit-font-smoothing:
 " }}}
 
 " vim-airline Setup {{{
-let g:airline_powerline_fonts = 1
 "let g:airline_theme = 'sol'
 let g:airline_theme = 'base16'
+let g:airline_powerline_fonts = 1
 " }}}
 
 " Syntastic Setup {{{
@@ -187,13 +190,6 @@ exec 'hi! SyntasticErrorSign guifg=red ctermfg=red ' . s:getbg('SyntasticErrorLi
 exec 'hi! SyntasticWarningSign guifg=yellow ctermfg=yellow ' . s:getbg('SyntasticWarningLine')
 exec 'hi! SyntasticError ' . s:getbg('SyntasticErrorLine')
 exec 'hi! SyntasticWarning ' . s:getbg('SyntasticWarningLine')
-" }}}
-
-" Rainbow Colors Improved Setup {{{
-" let g:rainbow_ctermfgs = ['10', '3', '13', '6', '15']
-let g:rainbow_ctermfgs = ['3']
-au FileType c,cpp,objc,objcpp,go,rust,python,ruby,javascript,java,vim call rainbow#load()
-au FileType clojure call rainbow#load( [['(', ')'], ['\[', '\]'], ['{', '}']], '"[-+*/=><%^&$#@!~|:?\\]"')
 " }}}
 
 " delimitMate Setup {{{
@@ -343,6 +339,7 @@ let g:clang_format#style_options = {
             \ "UseTab": "ForIndentation",
             \ "TabWidth": "4",
             \ "Standard": "C++11" }
+let g:clang_format#auto_format = 1
 au FileType c,cpp,objc,objcpp noremap  <silent> <buffer> <leader>f :ClangFormat<cr>
 au FileType c,cpp,objc,objcpp noremap! <silent> <buffer> <leader>f <c-o>:ClangFormat<cr>
 " }}}
