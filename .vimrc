@@ -45,6 +45,7 @@ ActivateAddons hg:https://bitbucket.org/ZyX_I/frawor
 ActivateAddons github:vim-pandoc/vim-pandoc-syntax
 ActivateAddons github:Twinside/vim-haskellConceal
 ActivateAddons github:guns/xterm-color-table.vim
+ActivateAddons github:leafgarland/typescript-vim
 ActivateAddons github:zerowidth/vim-copy-as-rtf
 ActivateAddons github:idris-hackers/idris-vim
 ActivateAddons github:flazz/vim-colorschemes
@@ -56,6 +57,7 @@ ActivateAddons github:Raimondi/delimitMate
 ActivateAddons github:scrooloose/syntastic
 ActivateAddons github:xuhdev/SingleCompile
 ActivateAddons github:marijnh/tern_for_vim
+ActivateAddons github:edkolev/tmuxline.vim
 ActivateAddons github:scrooloose/nerdtree
 ActivateAddons github:tikhomirov/vim-glsl
 ActivateAddons github:Shougo/vimshell.vim
@@ -122,8 +124,9 @@ endif
 hi! link Conceal Normal
 set bg=dark
 let g:gruvbox_invert_selection=0
-"colors peaksea
 colors gruvbox
+"colors peaksea
+"colors hemisu
 "colors wombat256mod
 " }}}
 
@@ -252,11 +255,14 @@ let g:racer_cmd = "/opt/src/racer/bin/racer"
 " }}}
 
 " SingleCompile Setup {{{
+let g:SingleCompile_showquickfixiferror = 1
+let g:SingleCompile_showquickfixifwarning = 1
+
 call SingleCompile#SetCompilerTemplate('c',
             \'clang',
             \'the Clang C and Objective-C compiler',
             \'clang',
-            \'-o $(FILE_TITLE)$ -g -O0',
+            \'-o $(FILE_TITLE)$ -g -O0 -Wall -Wextra -pedantic',
             \'./$(FILE_TITLE)$')
 
 call SingleCompile#ChooseCompiler('c', 'clang')
@@ -265,7 +271,7 @@ call SingleCompile#SetCompilerTemplate('cpp',
             \'clang',
             \'the Clang C and Objective-C compiler',
             \'clang++',
-            \'-o $(FILE_TITLE)$ -g -O0 -std=c++1z -lpthread',
+            \'-o $(FILE_TITLE)$ -g -O0 -Wall -Wextra -pedantic -std=c++1z -lpthread',
             \'./$(FILE_TITLE)$')
 
 call SingleCompile#ChooseCompiler('cpp', 'clang')
@@ -336,8 +342,9 @@ let g:clang_format#style_options = {
             \ "AlwaysBreakTemplateDeclarations": "true",
             \ "DerivePointerBinding": "false",
             \ "PointerBindsToType": "false",
-            \ "UseTab": "ForIndentation",
-            \ "TabWidth": "4",
+            \ "BinPackParameters" : "false",
+            \ "ColumnLimit": 80,
+            \ "TabWidth": 4,
             \ "Standard": "C++11" }
 let g:clang_format#auto_format = 1
 au FileType c,cpp,objc,objcpp noremap  <silent> <buffer> <leader>f :ClangFormat<cr>

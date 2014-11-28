@@ -16,3 +16,5 @@
 	smudge = git-media-smudge %f
 [diff]
 	tool = vimdiff
+[alias]
+	ignore = "!gi() { curl -L -s gitignore.io/api/$@ ;}; gi"

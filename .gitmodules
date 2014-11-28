@@ -1,0 +1,4 @@
+[submodule ".zprezto"]
+	path = .zprezto
+	url = git@github.com:oblitum/prezto.git
+	branch = osx
