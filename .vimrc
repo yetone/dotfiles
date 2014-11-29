@@ -55,7 +55,6 @@ ActivateAddons github:embear/vim-localvimrc
 ActivateAddons github:vim-pandoc/vim-pandoc
 ActivateAddons github:Raimondi/delimitMate
 ActivateAddons github:scrooloose/syntastic
-ActivateAddons github:xuhdev/SingleCompile
 ActivateAddons github:marijnh/tern_for_vim
 ActivateAddons github:edkolev/tmuxline.vim
 ActivateAddons github:scrooloose/nerdtree
@@ -64,6 +63,7 @@ ActivateAddons github:Shougo/vimshell.vim
 ActivateAddons github:eagletmt/ghcmod-vim
 ActivateAddons github:raichoo/haskell-vim
 ActivateAddons github:tpope/vim-obsession
+ActivateAddons github:thinca/vim-quickrun
 ActivateAddons github:honza/vim-snippets
 ActivateAddons github:tpope/vim-markdown
 ActivateAddons github:tpope/vim-fugitive
@@ -254,34 +254,14 @@ let g:rubycomplete_classes_in_global = 1
 let g:racer_cmd = "/opt/src/racer/bin/racer"
 " }}}
 
-" SingleCompile Setup {{{
-let g:SingleCompile_showquickfixiferror = 1
-let g:SingleCompile_showquickfixifwarning = 1
-
-call SingleCompile#SetCompilerTemplate('c',
-            \'clang',
-            \'the Clang C and Objective-C compiler',
-            \'clang',
-            \'-o $(FILE_TITLE)$ -g -O0 -Wall -Wextra -pedantic',
-            \'./$(FILE_TITLE)$')
-
-call SingleCompile#ChooseCompiler('c', 'clang')
-
-call SingleCompile#SetCompilerTemplate('cpp',
-            \'clang',
-            \'the Clang C and Objective-C compiler',
-            \'clang++',
-            \'-o $(FILE_TITLE)$ -g -O0 -Wall -Wextra -pedantic -std=c++1z -lpthread',
-            \'./$(FILE_TITLE)$')
-
-call SingleCompile#ChooseCompiler('cpp', 'clang')
-
-call SingleCompile#ChooseCompiler('javascript', 'node.js')
-
-noremap  <silent> <F8> :SCCompile<cr>
-noremap  <silent> <F9> :SCCompileRun<cr>
-noremap! <silent> <F8> <c-o>:SCCompile<cr>
-noremap! <silent> <F9> <c-o>:SCCompileRun<cr>
+" QuickRun Setup {{{
+let b:quickrun_config = { 'outputter/buffer/close_on_empty': 1 }
+let g:quickrun_config = {
+            \   'cpp' : {
+            \     'command': 'clang++',
+            \     'cmdopt': '-g -O0 -Wall -Wextra -pedantic -std=c++1z -lpthread'
+            \   }
+            \ }
 " }}}
 
 " localvimrc Setup {{{
