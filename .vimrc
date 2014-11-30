@@ -17,6 +17,7 @@ set clipboard=unnamed          " for simplified clipboard copy/paste"
 set backspace=indent,eol,start " no constraints for backspace
 set laststatus=2               " always display the statusline in all windows
 set noshowmode                 " hide the default mode text (e.g. -- INSERT -- below the statusline)
+set mouse=a                    " enable mouse to get scrolling
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winpos,winsize  " discards plugin stuff on saving session
 
 set wildignore+=CMakeFiles     " add ignored extension
