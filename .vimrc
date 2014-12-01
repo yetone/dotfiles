@@ -18,7 +18,8 @@ set backspace=indent,eol,start " no constraints for backspace
 set laststatus=2               " always display the statusline in all windows
 set noshowmode                 " hide the default mode text (e.g. -- INSERT -- below the statusline)
 set mouse=a                    " enable mouse to get scrolling
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winpos,winsize  " discards plugin stuff on saving session
+set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winpos,winsize " discards plugin stuff on saving session
 
 set wildignore+=CMakeFiles     " add ignored extension
 set wildignore+=*.pyc          " add ignored extension
@@ -29,7 +30,6 @@ au InsertEnter * :let @/=''    " Disable highlighted search on insert mode
 au InsertLeave * :let @/=''    " Enable it back
 au GUIEnter * set vb t_vb=     " No GUI visual bell
 au VimEnter * set vb t_vb=     " No CLI visual bell
-au FileType * set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " }}}
 
 " VIM-PLUG Setup {{{
@@ -253,11 +253,12 @@ au BufNewFile,BufRead *
 
 " Go
 let g:godef_split = 0
-au FileType go set noexpandtab
+au FileType go setlocal noexpandtab
 
 " Haskell
 let g:hpaste_author = 'Francisco Lopes'
 let g:syntastic_haskell_ghc_mod_args = '-g-fno-warn-type-defaults -g-fno-warn-missing-signatures'
+au FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Ruby
 let g:rubycomplete_buffer_loading = 1
