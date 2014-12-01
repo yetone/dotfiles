@@ -13,7 +13,7 @@ set showcmd                    " show number of lines selected
 set cpoptions+=$               " dollar sign while changing
 set foldmethod=marker          " folds on marks
 set nowrap                     " don't wrap lines
-set clipboard=unnamed          " for simplified clipboard copy/paste"
+set clipboard=unnamed          " for simplified clipboard copy/paste
 set backspace=indent,eol,start " no constraints for backspace
 set laststatus=2               " always display the statusline in all windows
 set noshowmode                 " hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -32,68 +32,80 @@ au VimEnter * set vb t_vb=     " No CLI visual bell
 au FileType * set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " }}}
 
-" VIM Addon Manager Setup {{{
+" VIM-PLUG Setup {{{
 
-set runtimepath+=~/.vim/addons/vim-addon-manager
-call vam#ActivateAddons([])
-ActivateAddons git:git://gitorious.org/vim-for-qt-kde/vim-qmake.git
-ActivateAddons github:biskark/vim-ultimate-colorscheme-utility
-ActivateAddons hg:http://hg.code.sf.net/p/formatvim/code
-ActivateAddons github:octol/vim-cpp-enhanced-highlight
-ActivateAddons github:Valloric/vim-operator-highlight
-ActivateAddons github:pbrisbin/vim-syntax-shakespeare
-ActivateAddons hg:https://bitbucket.org/ZyX_I/frawor
-ActivateAddons github:vim-pandoc/vim-pandoc-syntax
-ActivateAddons github:Twinside/vim-haskellConceal
-ActivateAddons github:guns/xterm-color-table.vim
-ActivateAddons github:leafgarland/typescript-vim
-ActivateAddons github:zerowidth/vim-copy-as-rtf
-ActivateAddons github:idris-hackers/idris-vim
-ActivateAddons github:flazz/vim-colorschemes
-ActivateAddons github:rhysd/vim-clang-format
-ActivateAddons github:oblitum/YouCompleteMe
-ActivateAddons github:embear/vim-localvimrc
-ActivateAddons github:vim-pandoc/vim-pandoc
-ActivateAddons github:Raimondi/delimitMate
-ActivateAddons github:scrooloose/syntastic
-ActivateAddons github:marijnh/tern_for_vim
-ActivateAddons github:edkolev/tmuxline.vim
-ActivateAddons github:scrooloose/nerdtree
-ActivateAddons github:tikhomirov/vim-glsl
-ActivateAddons github:Shougo/vimshell.vim
-ActivateAddons github:eagletmt/ghcmod-vim
-ActivateAddons github:raichoo/haskell-vim
-ActivateAddons github:tpope/vim-obsession
-ActivateAddons github:thinca/vim-quickrun
-ActivateAddons github:honza/vim-snippets
-ActivateAddons github:tpope/vim-markdown
-ActivateAddons github:tpope/vim-fugitive
-ActivateAddons github:godlygeek/tabular
-ActivateAddons github:vim-ruby/vim-ruby
-ActivateAddons github:tpope/vim-abolish
-ActivateAddons github:peterhoeg/vim-qml
-"ActivateAddons github:gilligan/vim-lldb
-ActivateAddons github:bling/vim-airline
-ActivateAddons github:rizzatti/dash.vim
-"ActivateAddons github:jeaye/color_coded
-ActivateAddons github:tpope/vim-eunuch
-ActivateAddons github:SirVer/ultisnips
-ActivateAddons github:ujihisa/neco-ghc
-ActivateAddons github:mattn/webapi-vim
-ActivateAddons github:mileszs/ack.vim
-ActivateAddons github:oblitum/bufkill
-ActivateAddons github:morhetz/gruvbox
-ActivateAddons github:vim-jp/cpp-vim
-ActivateAddons github:wting/rust.vim
-ActivateAddons github:tpope/vim-haml
-ActivateAddons github:fidian/hexmode
-ActivateAddons github:kien/ctrlp.vim
-ActivateAddons github:Shougo/vimproc
-ActivateAddons github:mattn/gist-vim
-ActivateAddons github:tomasr/molokai
-ActivateAddons github:fatih/vim-go
-ActivateAddons github:dahu/vimple
-ActivateAddons github:dag/vim2hs
+" Automatic installation {{{
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !mkdir -p ~/.vim/autoload
+  silent !curl -fLo ~/.vim/autoload/plug.vim
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+" }}}
+
+call plug#begin('~/.vim/plugged')
+
+" Plugins {{{
+Plug 'git://gitorious.org/vim-for-qt-kde/vim-qmake.git'
+Plug 'biskark/vim-ultimate-colorscheme-utility'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'Valloric/vim-operator-highlight'
+Plug 'pbrisbin/vim-syntax-shakespeare'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'Twinside/vim-haskellConceal'
+Plug 'guns/xterm-color-table.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'zerowidth/vim-copy-as-rtf'
+Plug 'idris-hackers/idris-vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'rhysd/vim-clang-format'
+Plug 'oblitum/YouCompleteMe', { 'branch': 'clang_complete-params' }
+Plug 'embear/vim-localvimrc'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/syntastic'
+Plug 'marijnh/tern_for_vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tikhomirov/vim-glsl'
+Plug 'Shougo/vimshell.vim'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'raichoo/haskell-vim'
+Plug 'tpope/vim-obsession'
+Plug 'thinca/vim-quickrun'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-fugitive'
+Plug 'godlygeek/tabular'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-abolish'
+Plug 'peterhoeg/vim-qml'
+"Plug 'gilligan/vim-lldb'
+Plug 'bling/vim-airline'
+Plug 'rizzatti/dash.vim'
+"Plug 'jeaye/color_coded'
+Plug 'oblitum/formatvim'
+Plug 'tpope/vim-eunuch'
+Plug 'SirVer/ultisnips'
+Plug 'ujihisa/neco-ghc'
+Plug 'mattn/webapi-vim'
+Plug 'mileszs/ack.vim'
+Plug 'oblitum/bufkill'
+Plug 'morhetz/gruvbox'
+Plug 'vim-jp/cpp-vim'
+Plug 'wting/rust.vim'
+Plug 'tpope/vim-haml'
+Plug 'fidian/hexmode'
+Plug 'kien/ctrlp.vim'
+Plug 'Shougo/vimproc', { 'do': 'make' }
+Plug 'mattn/gist-vim'
+Plug 'oblitum/frawor'
+Plug 'fatih/vim-go'
+Plug 'dahu/vimple'
+Plug 'dag/vim2hs'
+" }}}
+
+call plug#end()
 
 " }}}
 
