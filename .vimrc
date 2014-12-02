@@ -258,8 +258,10 @@ let g:racer_cmd = "/opt/src/racer/bin/racer"
 " }}}
 
 " QuickRun Setup {{{
-let b:quickrun_config = { 'outputter/buffer/close_on_empty': 1 }
 let g:quickrun_config = {
+            \   '_': {
+            \     'outputter/buffer/close_on_empty': 1
+            \   },
             \   'cpp' : {
             \     'command': 'clang++',
             \     'cmdopt': '-g -O0 -Wall -Wextra -pedantic -std=c++1z -lpthread'
