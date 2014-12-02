@@ -346,7 +346,6 @@ command! -nargs=0 Messages :redir => bufout | silent :messages | redir END | new
 
 " Gist it to bl.ocks.org {{{
 let g:gist_clip_command = 'pbcopy'
-"let g:gist_clip_command = 'xclip -selection clipboard'
 command! -range=% Blocks
             \ <line1>,<line2>Format format | f index.html | exe 'Gist -a' | bd!                                       |
             \ let @+ = 'http://bl.ocks.org/anonymous/raw/' . matchstr(@+, 'https://gist.github.com/\zs\w\+\ze') . '/' |
