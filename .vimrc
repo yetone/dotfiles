@@ -110,7 +110,7 @@ set cpoptions+=$            " dollar sign while changing
 set foldmethod=marker       " folds on marks
 set nowrap                  " don't wrap lines
 set textwidth=80            " set expected line width to 80
-set clipboard=unnamed       " for simplified clipboard copy/paste
+set clipboard=unnamedplus   " for simplified clipboard copy/paste
 set noshowmode              " hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowcmd               " disable blinking command feedback in bottom-right corner
 set mouse=a                 " enable mouse to get scrolling
@@ -118,6 +118,7 @@ set vb t_vb=                " no visual bell
 set pumheight=30            " limit popup menu height
 set concealcursor=nv        " expand concealed characters in insert mode solely
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
+set t_ut=                   " Fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
 
 au InsertEnter * :let @/='' " disable highlighted search on insert mode
 au InsertLeave * :let @/='' " enable it back
@@ -136,7 +137,7 @@ set wildignore+=*.pyc       " add ignored extension
 " GUI Settings {{{
 if has('gui_running')
     " Set default GUI font
-    set guifont=monofur\ for\ Powerline:h15
+    set guifont=monofur\ for\ Powerline\ 11
 
     " Remove scroll bars
     set guioptions-=L
@@ -426,7 +427,7 @@ command! -nargs=0 Messages :redir => bufout | silent :messages | redir END | new
 " }}}
 
 " Gist it to bl.ocks.org {{{
-let g:gist_clip_command = 'pbcopy'
+let g:gist_clip_command = 'xclip -selection clipboard'
 command! -range=% Blocks
             \ <line1>,<line2>Format format | f index.html | exe 'Gist -a' | bd!                                       |
             \ let @+ = 'http://bl.ocks.org/anonymous/raw/' . matchstr(@+, 'https://gist.github.com/\zs\w\+\ze') . '/' |
