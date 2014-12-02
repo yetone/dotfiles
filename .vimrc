@@ -1,35 +1,24 @@
 " General Settings {{{
-set nocompatible               " We're running Vim, not Vi!
 set regexpengine=1             " set old regexp engine
 set noswapfile                 " No swap files
-set autoindent                 " auto indenting
-set autoread                   " auto read external file changes
-set history=100                " keep 100 lines of history
-set ruler                      " show the cursor position
 set hidden                     " hide buffer without notice
 set hlsearch                   " highlight the last searched term
 set virtualedit=all            " let us walk in limbo
-set showcmd                    " show number of lines selected
 set cpoptions+=$               " dollar sign while changing
 set foldmethod=marker          " folds on marks
 set nowrap                     " don't wrap lines
 set clipboard=unnamed          " for simplified clipboard copy/paste
-set backspace=indent,eol,start " no constraints for backspace
-set laststatus=2               " always display the statusline in all windows
 set noshowmode                 " hide the default mode text (e.g. -- INSERT -- below the statusline)
 set mouse=a                    " enable mouse to get scrolling
+set vb t_vb=                   " No visual bell
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winpos,winsize " discards plugin stuff on saving session
 
 set wildignore+=CMakeFiles     " add ignored extension
 set wildignore+=*.pyc          " add ignored extension
 
-syntax on                      " syntax highlighting
-filetype plugin indent on      " use the file type plugins
 au InsertEnter * :let @/=''    " Disable highlighted search on insert mode
 au InsertLeave * :let @/=''    " Enable it back
-au GUIEnter * set vb t_vb=     " No GUI visual bell
-au VimEnter * set vb t_vb=     " No CLI visual bell
+au GUIEnter * set vb t_vb=     " Enforces no visual bell for GUI
 " }}}
 
 " VIM-PLUG Setup {{{
@@ -76,6 +65,7 @@ Plug 'thinca/vim-quickrun'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
 Plug 'godlygeek/tabular'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-abolish'
@@ -215,7 +205,6 @@ let delimitMate_quotes = "\" '"
 " }}}
 
 " YouCompleteMe Setup {{{
-set ttimeoutlen=50 " for faster InsertLeave triggering
 set completeopt-=preview " I really don't want preview window for this fork
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
