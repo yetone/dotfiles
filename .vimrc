@@ -40,6 +40,7 @@ Plug 'biskark/vim-ultimate-colorscheme-utility'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Valloric/vim-operator-highlight'
 Plug 'pbrisbin/vim-syntax-shakespeare'
+Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'Twinside/vim-haskellConceal'
 Plug 'guns/xterm-color-table.vim'
@@ -125,12 +126,7 @@ endif
 
 " Colorscheme {{{
 hi! link Conceal Normal
-set bg=dark
-let g:gruvbox_invert_selection=0
-colors gruvbox
-"colors peaksea
-"colors hemisu
-"colors wombat256mod
+colors Tomorrow-Night
 " }}}
 
 " Fix borders of fullscreen GUI {{{
