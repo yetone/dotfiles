@@ -18,3 +18,5 @@
 	tool = vimdiff
 [alias]
 	ignore = "!gi() { curl -L -s gitignore.io/api/$@ ;}; gi"
+[credential]
+	helper = osxkeychain
