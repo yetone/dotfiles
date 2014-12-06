@@ -1,26 +1,3 @@
-" General Settings {{{
-set regexpengine=1             " set old regexp engine
-set noswapfile                 " No swap files
-set hidden                     " hide buffer without notice
-set hlsearch                   " highlight the last searched term
-set virtualedit=all            " let us walk in limbo
-set cpoptions+=$               " dollar sign while changing
-set foldmethod=marker          " folds on marks
-set nowrap                     " don't wrap lines
-set clipboard=unnamed          " for simplified clipboard copy/paste
-set noshowmode                 " hide the default mode text (e.g. -- INSERT -- below the statusline)
-set mouse=a                    " enable mouse to get scrolling
-set vb t_vb=                   " No visual bell
-set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
-
-set wildignore+=CMakeFiles     " add ignored extension
-set wildignore+=*.pyc          " add ignored extension
-
-au InsertEnter * :let @/=''    " Disable highlighted search on insert mode
-au InsertLeave * :let @/=''    " Enable it back
-au GUIEnter * set vb t_vb=     " Enforces no visual bell for GUI
-" }}}
-
 " VIM-PLUG Setup {{{
 
 " Automatic installation {{{
@@ -98,14 +75,36 @@ Plug 'dag/vim2hs'
 
 call plug#end()
 
+" Plugin Preloading {{{
+runtime! plugin/sensible.vim
 " }}}
 
-" Limit popup menu height {{{
-set pumheight=30
 " }}}
 
-" Open QuickFix horizontally {{{
-au FileType qf wincmd J
+" General Settings {{{
+set regexpengine=1             " set old regexp engine
+set noswapfile                 " No swap files
+set hidden                     " hide buffer without notice
+set hlsearch                   " highlight the last searched term
+set virtualedit=all            " let us walk in limbo
+set cpoptions+=$               " dollar sign while changing
+set foldmethod=marker          " folds on marks
+set nowrap                     " don't wrap lines
+set clipboard=unnamed          " for simplified clipboard copy/paste
+set noshowmode                 " hide the default mode text (e.g. -- INSERT -- below the statusline)
+set noshowcmd                  " disable blinking command feedback in bottom-right corner
+set mouse=a                    " enable mouse to get scrolling
+set vb t_vb=                   " No visual bell
+set pumheight=30               " Limit popup menu height
+set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
+
+au InsertEnter * :let @/=''    " Disable highlighted search on insert mode
+au InsertLeave * :let @/=''    " Enable it back
+au GUIEnter * set vb t_vb=     " Enforces no visual bell for GUI
+au FileType qf wincmd J        " Open QuickFix horizontally
+
+set wildignore+=CMakeFiles     " add ignored extension
+set wildignore+=*.pyc          " add ignored extension
 " }}}
 
 " GUI Settings {{{
