@@ -126,8 +126,8 @@ endif
 " }}}
 
 " Colorscheme {{{
-hi! link Conceal Normal
 colors Tomorrow-Night
+hi! link Conceal Normal
 " }}}
 
 " Fix borders of fullscreen GUI {{{
