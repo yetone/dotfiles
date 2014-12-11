@@ -131,6 +131,15 @@ colors Tomorrow-Night
 hi! link Conceal Normal
 " }}}
 
+" Airline Setup {{{
+let g:airline_theme = 'base16'
+let g:airline_powerline_fonts = 1
+" }}}
+
+" format.vim Setup {{{
+let g:format_HTMLAdditionalCSS = 'body { font-size:10pt; -webkit-font-smoothing: antialiased; }'
+" }}}
+
 " Fix borders of fullscreen GUI {{{
 if has('gui_gtk') && has('gui_running')
     let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
@@ -139,16 +148,6 @@ if has('gui_gtk') && has('gui_running')
     exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
                 \' >> ~/.gtkrc-2.0'
 endif
-" }}}
-
-" format.vim Setup {{{
-let g:format_HTMLAdditionalCSS = 'body { font-size:10pt; -webkit-font-smoothing: antialiased; }'
-" }}}
-
-" vim-airline Setup {{{
-"let g:airline_theme = 'sol'
-let g:airline_theme = 'base16'
-let g:airline_powerline_fonts = 1
 " }}}
 
 " Syntastic Setup {{{
