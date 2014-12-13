@@ -57,6 +57,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'oblitum/formatvim'
 Plug 'junegunn/goyo.vim'
 Plug 'ogier/guessindent'
+Plug 'basyura/bitly.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'SirVer/ultisnips'
 Plug 'ujihisa/neco-ghc'
@@ -369,7 +370,7 @@ let g:gist_clip_command = 'pbcopy'
 command! -range=% Blocks
             \ <line1>,<line2>Format format | f index.html | exe 'Gist -a' | bd!                                       |
             \ let @+ = 'http://bl.ocks.org/anonymous/raw/' . matchstr(@+, 'https://gist.github.com/\zs\w\+\ze') . '/' |
-            \ redraw | echomsg 'Done: ' . @+ | setlocal nomodified
+            \ let @+ = bitly#shorten(@+).url | redraw | echomsg 'Done: ' . @+ | setlocal nomodified
 " }}}
 
 " Highlight text after column 80 {{{
