@@ -34,6 +34,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'marijnh/tern_for_vim'
 Plug 'edkolev/tmuxline.vim'
+Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tikhomirov/vim-glsl'
 Plug 'Shougo/vimshell.vim'
@@ -63,6 +64,8 @@ Plug 'mattn/webapi-vim'
 Plug 'mileszs/ack.vim'
 Plug 'oblitum/bufkill'
 Plug 'morhetz/gruvbox'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
 Plug 'wting/rust.vim'
 Plug 'tpope/vim-haml'
@@ -300,20 +303,6 @@ au FileType nerdtree cnoreabbrev <buffer> BD <nop>
 nnoremap <silent> <space> :CtrlPBuffer<cr>
 " }}}
 
-" Paste block while inserting new lines to hold it {{{
-
-function! FancyPaste(reg)
-    let paste = split(getreg(a:reg), '\n')
-    let spaces = repeat(' ', virtcol('.')-1)
-    call map(paste, 'spaces . v:val')
-    call append(line('.'), paste)
-endfunction
-
-nnoremap <leader>p :call FancyPaste('"')<cr>
-nnoremap <leader>P :call FancyPaste('+')<cr>
-
-" }}}
-
 " ClangFormat Setup {{{
 let g:clang_format#style_options = {
             \ "AccessModifierOffset": -4,
@@ -331,6 +320,29 @@ let g:clang_format#style_options = {
 let g:clang_format#auto_format = 1
 au FileType c,cpp,objc,objcpp noremap  <silent> <buffer> <leader>f :ClangFormat<cr>
 au FileType c,cpp,objc,objcpp noremap! <silent> <buffer> <leader>f <c-o>:ClangFormat<cr>
+" }}}
+
+" Jedi Setup {{{
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#completions_enabled = 0
+" }}}
+
+" vim-notes Setup {{{
+let g:notes_directories = ['~/Google Drive/Notes']
+" }}}
+
+" Paste block while inserting new lines to hold it {{{
+
+function! FancyPaste(reg)
+    let paste = split(getreg(a:reg), '\n')
+    let spaces = repeat(' ', virtcol('.')-1)
+    call map(paste, 'spaces . v:val')
+    call append(line('.'), paste)
+endfunction
+
+nnoremap <leader>p :call FancyPaste('"')<cr>
+nnoremap <leader>P :call FancyPaste('+')<cr>
+
 " }}}
 
 " Edit command output in a buffer {{{
