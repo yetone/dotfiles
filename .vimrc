@@ -116,7 +116,7 @@ set wildignore+=*.pyc          " add ignored extension
 " GUI Settings {{{
 if has('gui_running')
     " Set default GUI font
-    set guifont=monofur\ for\ Powerline:h17
+    set guifont=monofur\ for\ Powerline:h18
 
     " Remove scroll bars
     set guioptions-=L
