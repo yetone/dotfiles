@@ -144,15 +144,13 @@ let g:airline_powerline_fonts = 1
 let g:format_HTMLAdditionalCSS = '
 \ @font-face {
 \   font-family: "monofur";
-\   src: url("http://typefront.com/fonts/825592810.eot");
+\   src: url("http://typefront.com/fonts/825592811.eot");
 \   src: local("☺"),
-\        url("http://typefront.com/fonts/825592810.woff") format("woff"),
-\        url("http://typefront.com/fonts/825592810.otf") format("opentype"),
-\        url("http://typefront.com/fonts/825592810.svg") format("svg");
-\   font-weight: normal;
-\   font-style: normal;
+\        url("http://typefront.com/fonts/825592811.woff") format("woff"),
+\        url("http://typefront.com/fonts/825592811.ttf") format("truetype"),
+\        url("http://typefront.com/fonts/825592811.svg") format("svg");
 \ }
-\ body { font-family: "monofur", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, monospace; font-size:14pt; -webkit-font-smoothing: antialiased; }'
+\ body { font-family: "monofur", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, monospace; font-size:13.3pt; -webkit-font-smoothing: antialiased; }'
 " }}}
 
 " Fix borders of fullscreen GUI {{{
