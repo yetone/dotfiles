@@ -140,7 +140,18 @@ let g:airline_powerline_fonts = 1
 " }}}
 
 " format.vim Setup {{{
-let g:format_HTMLAdditionalCSS = 'body { font-size:10pt; -webkit-font-smoothing: antialiased; }'
+let g:format_HTMLAdditionalCSS = '
+\ @font-face {
+\   font-family: "monofur";
+\   src: url("http://typefront.com/fonts/825592810.eot");
+\   src: local("☺"),
+\        url("http://typefront.com/fonts/825592810.woff") format("woff"),
+\        url("http://typefront.com/fonts/825592810.otf") format("opentype"),
+\        url("http://typefront.com/fonts/825592810.svg") format("svg");
+\   font-weight: normal;
+\   font-style: normal;
+\ }
+\ body { font-family: "monofur", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, monospace; font-size:14pt; -webkit-font-smoothing: antialiased; }'
 " }}}
 
 " Fix borders of fullscreen GUI {{{
