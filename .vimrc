@@ -327,7 +327,6 @@ let g:clang_format#style_options = {
             \ "ColumnLimit": 80,
             \ "TabWidth": 4,
             \ "Standard": "C++11" }
-let g:clang_format#auto_format = 1
 au FileType c,cpp,objc,objcpp noremap  <silent> <buffer> <leader>f :ClangFormat<cr>
 au FileType c,cpp,objc,objcpp noremap! <silent> <buffer> <leader>f <c-o>:ClangFormat<cr>
 " }}}
