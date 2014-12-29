@@ -28,7 +28,7 @@ Plug 'idris-hackers/idris-vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'rhysd/vim-clang-format'
 Plug 'junegunn/limelight.vim'
-Plug 'oblitum/YouCompleteMe', { 'branch': 'clang_complete-params' }
+Plug 'oblitum/YouCompleteMe', { 'branch': 'argument_hints' }
 Plug 'embear/vim-localvimrc'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'Raimondi/delimitMate'
@@ -54,11 +54,12 @@ Plug 'peterhoeg/vim-qml'
 Plug 'gilligan/vim-lldb'
 Plug 'bling/vim-airline'
 Plug 'rizzatti/dash.vim'
-"Plug 'jeaye/color_coded'
+"Plug 'jeaye/color_coded', { 'branch': '0.1', 'do': 'make' }
 Plug 'oblitum/formatvim'
 Plug 'junegunn/goyo.vim'
 Plug 'ogier/guessindent'
 Plug 'basyura/bitly.vim'
+Plug 'rhysd/wandbox-vim'
 Plug 'tpope/vim-eunuch'
 Plug 'SirVer/ultisnips'
 Plug 'ujihisa/neco-ghc'
@@ -109,7 +110,8 @@ set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
 au InsertEnter * :let @/=''    " Disable highlighted search on insert mode
 au InsertLeave * :let @/=''    " Enable it back
 au GUIEnter * set vb t_vb=     " Enforces no visual bell for GUI
-au FileType qf wincmd J        " Open QuickFix horizontally
+au FileType qf wincmd J | setlocal wrap                  " Open QuickFix horizontally with line wrap
+au WinEnter * if &previewwindow | setlocal wrap | endif  " Preview window with line wrap
 
 set wildignore+=CMakeFiles     " add ignored extension
 set wildignore+=*.pyc          " add ignored extension
