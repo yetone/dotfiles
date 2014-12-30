@@ -54,7 +54,7 @@ Plug 'peterhoeg/vim-qml'
 Plug 'gilligan/vim-lldb'
 Plug 'bling/vim-airline'
 Plug 'rizzatti/dash.vim'
-"Plug 'jeaye/color_coded', { 'branch': '0.1', 'do': 'make' }
+"Plug 'jeaye/color_coded', { 'do': 'make' }
 Plug 'oblitum/formatvim'
 Plug 'junegunn/goyo.vim'
 Plug 'ogier/guessindent'
@@ -134,7 +134,9 @@ endif
 " }}}
 
 " Colorscheme {{{
-colors Tomorrow-Night
+set bg=dark
+let g:gruvbox_invert_selection=0
+colors gruvbox
 hi! link Conceal Normal
 " }}}
 
