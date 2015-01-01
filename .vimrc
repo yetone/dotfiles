@@ -67,6 +67,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mileszs/ack.vim'
 Plug 'oblitum/bufkill'
 Plug 'morhetz/gruvbox'
+Plug 'drn/zoomwin-vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
@@ -140,6 +141,33 @@ colors gruvbox
 hi! link Conceal Normal
 " }}}
 
+" File Type Settings {{{
+
+" C++
+au BufNewFile,BufRead *
+            \ if expand('%:e') =~ '^\(h\|hh\|hxx\|hpp\|ii\|ixx\|ipp\|inl\|txx\|tpp\|tpl\|cc\|cxx\|cpp\)$' |
+            \   if &ft != 'cpp'                                                                           |
+            \     set ft=cpp                                                                              |
+            \   endif                                                                                     |
+            \ endif
+
+" Go
+let g:godef_split = 0
+au FileType go setlocal noexpandtab
+
+" Haskell
+let g:hpaste_author = 'Francisco Lopes'
+let g:syntastic_haskell_ghc_mod_args = '-g-fno-warn-type-defaults -g-fno-warn-missing-signatures'
+au FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+" Ruby
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+
+" Rust
+let g:racer_cmd = "/opt/src/racer/bin/racer"
+" }}}
+
 " Airline Setup {{{
 let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
@@ -156,16 +184,6 @@ let g:format_HTMLAdditionalCSS = '
 \        url("http://typefront.com/fonts/825592811.svg") format("svg");
 \ }
 \ body { font-family: "monofur", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, monospace; font-size:13.3pt; -webkit-font-smoothing: antialiased; }'
-" }}}
-
-" Fix borders of fullscreen GUI {{{
-if has('gui_gtk') && has('gui_running')
-    let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
-    exe 'silent !echo ''style "vimfix" { bg[NORMAL] = "' . escape(s:border, '#') . '" }'''.
-                \' > ~/.gtkrc-2.0'
-    exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
-                \' >> ~/.gtkrc-2.0'
-endif
 " }}}
 
 " Syntastic Setup {{{
@@ -220,7 +238,7 @@ let delimitMate_quotes = "\" '"
 " }}}
 
 " YouCompleteMe Setup {{{
-set completeopt-=preview " I really don't want preview window for this fork
+set completeopt-=preview
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_seed_identifiers_with_syntax = 1
@@ -228,48 +246,12 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
 nnoremap <leader>h :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>i :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>e :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 " }}}
 
 " Ultisnips Setup {{{
 let g:UltiSnipsExpandTrigger = '<c-a>'
-" }}}
-
-" When editing a file, always jump to the last cursor position {{{
-au BufReadPost *
-            \ if ! exists("g:leave_my_cursor_position_alone")   |
-            \   if line("'\"") > 0 && line ("'\"") <= line("$") |
-            \     exe "normal g'\""                             |
-            \   endif                                           |
-            \ endif
-" }}}
-
-" File Type Settings {{{
-
-" C++
-au BufNewFile,BufRead *
-            \ if expand('%:e') =~ '^\(h\|hh\|hxx\|hpp\|ii\|ixx\|ipp\|inl\|txx\|tpp\|tpl\|cc\|cxx\|cpp\)$' |
-            \   if &ft != 'cpp'                                                                           |
-            \     set ft=cpp                                                                              |
-            \   endif                                                                                     |
-            \ endif
-
-" Go
-let g:godef_split = 0
-au FileType go setlocal noexpandtab
-
-" Haskell
-let g:hpaste_author = 'Francisco Lopes'
-let g:syntastic_haskell_ghc_mod_args = '-g-fno-warn-type-defaults -g-fno-warn-missing-signatures'
-au FileType haskell setlocal omnifunc=necoghc#omnifunc
-
-" Ruby
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-
-" Rust
-let g:racer_cmd = "/opt/src/racer/bin/racer"
 " }}}
 
 " QuickRun Setup {{{
@@ -291,11 +273,6 @@ let g:localvimrc_ask = 0
 " VimShell Setup {{{
 let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
 let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
-" }}}
-
-" Toggle Shell Pasting {{{
-nnoremap <F2> :set invpaste paste?<cr>
-set pastetoggle=<F2>
 " }}}
 
 " NERDTree Setup {{{
@@ -343,6 +320,34 @@ let g:jedi#completions_enabled = 0
 
 " vim-notes Setup {{{
 let g:notes_directories = ['~/Google Drive/Notes']
+" }}}
+
+" ZoomWin Setup {{{
+nnoremap <leader>z :ZoomWin<CR>
+" }}}
+
+" Fix borders of fullscreen GUI {{{
+if has('gui_gtk') && has('gui_running')
+    let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
+    exe 'silent !echo ''style "vimfix" { bg[NORMAL] = "' . escape(s:border, '#') . '" }'''.
+                \' > ~/.gtkrc-2.0'
+    exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
+                \' >> ~/.gtkrc-2.0'
+endif
+" }}}
+
+" When editing a file, always jump to the last cursor position {{{
+au BufReadPost *
+            \ if ! exists("g:leave_my_cursor_position_alone")   |
+            \   if line("'\"") > 0 && line ("'\"") <= line("$") |
+            \     exe "normal g'\""                             |
+            \   endif                                           |
+            \ endif
+" }}}
+
+" Toggle Shell Pasting {{{
+nnoremap <F2> :set invpaste paste?<cr>
+set pastetoggle=<F2>
 " }}}
 
 " Paste block while inserting new lines to hold it {{{
