@@ -326,6 +326,10 @@ let g:notes_directories = ['~/Google Drive/Notes']
 nnoremap <leader>z :ZoomWin<CR>
 " }}}
 
+" GuessIndent Setup {{{
+autocmd BufReadPost * :GuessIndent
+" }}}
+
 " Fix borders of fullscreen GUI {{{
 if has('gui_gtk') && has('gui_running')
     let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
