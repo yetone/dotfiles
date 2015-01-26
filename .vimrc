@@ -362,7 +362,6 @@ set pastetoggle=<F2>
 " }}}
 
 " Paste block while inserting new lines to hold it {{{
-
 function! FancyPaste(reg)
     let paste = split(getreg(a:reg), '\n')
     let spaces = repeat(' ', virtcol('.')-1)
@@ -372,7 +371,6 @@ endfunction
 
 nnoremap <leader>p :call FancyPaste('"')<cr>
 nnoremap <leader>P :call FancyPaste('+')<cr>
-
 " }}}
 
 " Edit command output in a buffer {{{
