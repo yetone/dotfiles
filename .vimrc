@@ -19,6 +19,7 @@ Plug 'Valloric/vim-operator-highlight'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'Twinside/vim-haskellConceal'
 Plug 'guns/xterm-color-table.vim'
@@ -43,6 +44,7 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'raichoo/haskell-vim'
 Plug 'tpope/vim-obsession'
 Plug 'thinca/vim-quickrun'
+Plug 'Soares/longline.vim'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-fugitive'
@@ -100,6 +102,7 @@ set virtualedit=all            " let us walk in limbo
 set cpoptions+=$               " dollar sign while changing
 set foldmethod=marker          " folds on marks
 set nowrap                     " don't wrap lines
+set textwidth=80               " set expected line width to 80
 set clipboard=unnamed          " for simplified clipboard copy/paste
 set noshowmode                 " hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowcmd                  " disable blinking command feedback in bottom-right corner
@@ -165,7 +168,7 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 
 " Rust
-let g:racer_cmd = "/opt/src/racer/bin/racer"
+let g:racer_cmd = "/opt/src/racer/target/racer"
 " }}}
 
 " Airline Setup {{{
@@ -244,6 +247,8 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
 nnoremap <leader>h :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>e :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -330,6 +335,11 @@ nnoremap <leader>z :ZoomWin<CR>
 autocmd BufReadPost * :GuessIndent
 " }}}
 
+" LongLine Setup {{{
+let g:longline_autohl = 1
+let g:longline_matchgroup = 'Visual'
+" }}}
+
 " Fix borders of fullscreen GUI {{{
 if has('gui_gtk') && has('gui_running')
     let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
@@ -382,9 +392,4 @@ command! -range=% Blocks
             \ <line1>,<line2>Format format | f index.html | exe 'Gist -a' | bd!                                       |
             \ let @+ = 'http://bl.ocks.org/anonymous/raw/' . matchstr(@+, 'https://gist.github.com/\zs\w\+\ze') . '/' |
             \ let @+ = bitly#shorten(@+).url | redraw | echomsg 'Done: ' . @+ | setlocal nomodified
-" }}}
-
-" Highlight text after column 80 {{{
-exec 'hi! OverLength ' . s:getbg('Visual')
-match OverLength /\%81v.\+/
 " }}}
