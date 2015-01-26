@@ -18,8 +18,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Valloric/vim-operator-highlight'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'Twinside/vim-haskellConceal'
 Plug 'guns/xterm-color-table.vim'
@@ -339,6 +340,10 @@ autocmd BufReadPost * :GuessIndent
 " LongLine Setup {{{
 let g:longline_autohl = 1
 let g:longline_matchgroup = 'Visual'
+" }}}
+
+" Indent Guides Setup {{{
+let g:indent_guides_enable_on_vim_startup = 0
 " }}}
 
 " Fix borders of fullscreen GUI {{{
