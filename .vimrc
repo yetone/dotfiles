@@ -29,6 +29,7 @@ Plug 'idris-hackers/idris-vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'rhysd/vim-clang-format'
 Plug 'junegunn/limelight.vim'
+Plug 'dietsche/vim-lastplace'
 Plug 'oblitum/YouCompleteMe', { 'branch': 'argument_hints' }
 Plug 'embear/vim-localvimrc'
 Plug 'vim-pandoc/vim-pandoc'
@@ -348,15 +349,6 @@ if has('gui_gtk') && has('gui_running')
     exe 'silent !echo ''widget "vim-main-window.*GtkForm" style "vimfix"'''.
                 \' >> ~/.gtkrc-2.0'
 endif
-" }}}
-
-" When editing a file, always jump to the last cursor position {{{
-au BufReadPost *
-            \ if ! exists("g:leave_my_cursor_position_alone")   |
-            \   if line("'\"") > 0 && line ("'\"") <= line("$") |
-            \     exe "normal g'\""                             |
-            \   endif                                           |
-            \ endif
 " }}}
 
 " Toggle Shell Pasting {{{
