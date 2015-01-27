@@ -96,31 +96,35 @@ runtime! plugin/sensible.vim
 " }}}
 
 " General Settings {{{
-set regexpengine=1             " set old regexp engine
-set noswapfile                 " No swap files
-set hidden                     " hide buffer without notice
-set hlsearch                   " highlight the last searched term
-set virtualedit=all            " let us walk in limbo
-set cpoptions+=$               " dollar sign while changing
-set foldmethod=marker          " folds on marks
-set nowrap                     " don't wrap lines
-set textwidth=80               " set expected line width to 80
-set clipboard=unnamed          " for simplified clipboard copy/paste
-set noshowmode                 " hide the default mode text (e.g. -- INSERT -- below the statusline)
-set noshowcmd                  " disable blinking command feedback in bottom-right corner
-set mouse=a                    " enable mouse to get scrolling
-set vb t_vb=                   " No visual bell
-set pumheight=30               " Limit popup menu height
+set regexpengine=1          " set old regexp engine
+set noswapfile              " No swap files
+set hidden                  " hide buffer without notice
+set hlsearch                " highlight the last searched term
+set virtualedit=all         " let us walk in limbo
+set cpoptions+=$            " dollar sign while changing
+set foldmethod=marker       " folds on marks
+set nowrap                  " don't wrap lines
+set textwidth=80            " set expected line width to 80
+set clipboard=unnamed       " for simplified clipboard copy/paste
+set noshowmode              " hide the default mode text (e.g. -- INSERT -- below the statusline)
+set noshowcmd               " disable blinking command feedback in bottom-right corner
+set mouse=a                 " enable mouse to get scrolling
+set vb t_vb=                " No visual bell
+set pumheight=30            " Limit popup menu height
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
 
-au InsertEnter * :let @/=''    " Disable highlighted search on insert mode
-au InsertLeave * :let @/=''    " Enable it back
-au GUIEnter * set vb t_vb=     " Enforces no visual bell for GUI
-au FileType qf wincmd J | setlocal wrap                  " Open QuickFix horizontally with line wrap
-au WinEnter * if &previewwindow | setlocal wrap | endif  " Preview window with line wrap
+au InsertEnter * :let @/='' " Disable highlighted search on insert mode
+au InsertLeave * :let @/='' " Enable it back
+au GUIEnter * set vb t_vb=  " Enforces no visual bell for GUI
 
-set wildignore+=CMakeFiles     " add ignored extension
-set wildignore+=*.pyc          " add ignored extension
+" Open QuickFix horizontally with line wrap and not avoiding long lines
+au FileType qf wincmd J | setlocal wrap textwidth=0
+
+" Preview window with line wrap and not avoiding long lines
+au WinEnter * if &previewwindow | setlocal wrap textwidth=0 | endif
+
+set wildignore+=CMakeFiles  " add ignored extension
+set wildignore+=*.pyc       " add ignored extension
 " }}}
 
 " GUI Settings {{{
