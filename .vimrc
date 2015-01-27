@@ -350,6 +350,10 @@ let g:longline_matchgroup = 'Visual'
 let g:indent_guides_enable_on_vim_startup = 0
 " }}}
 
+" Goyo Setup {{{
+nnoremap <leader>g :Goyo<CR>
+" }}}
+
 " Fix borders of fullscreen GUI {{{
 if has('gui_gtk') && has('gui_running')
     let s:border = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
