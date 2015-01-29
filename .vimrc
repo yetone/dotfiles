@@ -31,7 +31,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'rhysd/vim-clang-format'
 Plug 'junegunn/limelight.vim'
 Plug 'dietsche/vim-lastplace'
-Plug 'oblitum/YouCompleteMe', { 'branch': 'argument_hints' }
+Plug 'oblitum/YouCompleteMe'
 Plug 'embear/vim-localvimrc'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'Raimondi/delimitMate'
