@@ -233,10 +233,10 @@ let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = '☢'
 hi! link SyntasticErrorLine Visual
 hi! link SyntasticWarningLine Visual
-exec 'hi! SyntasticErrorSign guifg=red ctermfg=red ' . s:getbg('SyntasticErrorLine')
-exec 'hi! SyntasticWarningSign guifg=yellow ctermfg=yellow ' . s:getbg('SyntasticWarningLine')
-exec 'hi! SyntasticError ' . s:getbg('SyntasticErrorLine')
-exec 'hi! SyntasticWarning ' . s:getbg('SyntasticWarningLine')
+autocmd VimEnter,ColorScheme * exec 'hi! SyntasticErrorSign guifg=red ctermfg=red ' . s:getbg('SyntasticErrorLine')
+autocmd VimEnter,ColorScheme * exec 'hi! SyntasticWarningSign guifg=yellow ctermfg=yellow ' . s:getbg('SyntasticWarningLine')
+autocmd VimEnter,ColorScheme * exec 'hi! SyntasticError ' . s:getbg('SyntasticErrorLine')
+autocmd VimEnter,ColorScheme * exec 'hi! SyntasticWarning ' . s:getbg('SyntasticWarningLine')
 " }}}
 
 " delimitMate Setup {{{
