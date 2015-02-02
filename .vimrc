@@ -348,6 +348,22 @@ let g:indent_guides_enable_on_vim_startup = 0
 " }}}
 
 " Goyo Setup {{{
+let g:goyo_margin_top = 2
+let g:goyo_margin_bottom = 2
+
+function! s:goyo_enter()
+  silent !tmux set status off
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+endfunction
+
+autocmd! User GoyoEnter
+autocmd! User GoyoLeave
+autocmd  User GoyoEnter nested call <SID>goyo_enter()
+autocmd  User GoyoLeave nested call <SID>goyo_leave()
+
 nnoremap <leader>g :Goyo<CR>
 " }}}
 
