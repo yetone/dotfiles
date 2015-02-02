@@ -27,13 +27,13 @@ Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'zerowidth/vim-copy-as-rtf'
 Plug 'idris-hackers/idris-vim'
-Plug 'flazz/vim-colorschemes'
 Plug 'rhysd/vim-clang-format'
 Plug 'junegunn/limelight.vim'
 Plug 'dietsche/vim-lastplace'
 Plug 'oblitum/YouCompleteMe'
 Plug 'embear/vim-localvimrc'
 Plug 'vim-pandoc/vim-pandoc'
+Plug 'junegunn/seoul256.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'marijnh/tern_for_vim'
@@ -144,9 +144,8 @@ endif
 " }}}
 
 " Colorscheme {{{
-set bg=dark
-let g:gruvbox_invert_selection=0
-colors gruvbox
+let g:seoul256_background = 235
+colors seoul256
 hi! link Conceal Normal
 " }}}
 
@@ -178,7 +177,7 @@ let g:racer_cmd = "/opt/src/racer/target/racer"
 " }}}
 
 " Airline Setup {{{
-let g:airline_theme = 'base16'
+let g:airline_theme = 'zenburn'
 let g:airline_powerline_fonts = 1
 " }}}
 
