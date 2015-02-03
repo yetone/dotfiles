@@ -177,7 +177,7 @@ let g:racer_cmd = "/opt/src/racer/target/racer"
 " }}}
 
 " Airline Setup {{{
-let g:airline_theme = 'zenburn'
+let g:airline_theme = 'wombat'
 let g:airline_powerline_fonts = 1
 " }}}
 
