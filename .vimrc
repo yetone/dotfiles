@@ -5,7 +5,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !mkdir -p ~/.vim/autoload
   silent !curl -fLo ~/.vim/autoload/plug.vim
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
+  au VimEnter * PlugInstall
 endif
 " }}}
 
@@ -233,10 +233,10 @@ let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = '☢'
 hi! link SyntasticErrorLine Visual
 hi! link SyntasticWarningLine Visual
-autocmd VimEnter,ColorScheme * exec 'hi! SyntasticErrorSign guifg=red ctermfg=red ' . s:getbg('SyntasticErrorLine')
-autocmd VimEnter,ColorScheme * exec 'hi! SyntasticWarningSign guifg=yellow ctermfg=yellow ' . s:getbg('SyntasticWarningLine')
-autocmd VimEnter,ColorScheme * exec 'hi! SyntasticError ' . s:getbg('SyntasticErrorLine')
-autocmd VimEnter,ColorScheme * exec 'hi! SyntasticWarning ' . s:getbg('SyntasticWarningLine')
+au VimEnter,ColorScheme * exec 'hi! SyntasticErrorSign guifg=red ctermfg=red ' . s:getbg('SyntasticErrorLine')
+au VimEnter,ColorScheme * exec 'hi! SyntasticWarningSign guifg=yellow ctermfg=yellow ' . s:getbg('SyntasticWarningLine')
+au VimEnter,ColorScheme * exec 'hi! SyntasticError ' . s:getbg('SyntasticErrorLine')
+au VimEnter,ColorScheme * exec 'hi! SyntasticWarning ' . s:getbg('SyntasticWarningLine')
 " }}}
 
 " delimitMate Setup {{{
@@ -335,7 +335,7 @@ nnoremap <leader>z :ZoomWin<CR>
 " }}}
 
 " GuessIndent Setup {{{
-autocmd BufReadPost * :GuessIndent
+au BufReadPost * :GuessIndent
 " }}}
 
 " LongLine Setup {{{
@@ -359,10 +359,10 @@ function! s:goyo_leave()
   silent !tmux set status on
 endfunction
 
-autocmd! User GoyoEnter
-autocmd! User GoyoLeave
-autocmd  User GoyoEnter nested call <SID>goyo_enter()
-autocmd  User GoyoLeave nested call <SID>goyo_leave()
+au! User GoyoEnter
+au! User GoyoLeave
+au  User GoyoEnter nested call <SID>goyo_enter()
+au  User GoyoLeave nested call <SID>goyo_leave()
 
 nnoremap <leader>g :Goyo<CR>
 " }}}
