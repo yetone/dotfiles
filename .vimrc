@@ -21,18 +21,19 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+"Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'Twinside/vim-haskellConceal'
 Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'zerowidth/vim-copy-as-rtf'
+"Plug 'suan/vim-instant-markdown'
 Plug 'idris-hackers/idris-vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'junegunn/limelight.vim'
 Plug 'dietsche/vim-lastplace'
 Plug 'oblitum/YouCompleteMe'
 Plug 'embear/vim-localvimrc'
-Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc'
 Plug 'junegunn/seoul256.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
@@ -68,6 +69,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'SirVer/ultisnips'
 Plug 'ujihisa/neco-ghc'
 Plug 'mattn/webapi-vim'
+Plug 'cespare/vim-toml'
 Plug 'mileszs/ack.vim'
 Plug 'oblitum/bufkill'
 Plug 'morhetz/gruvbox'
@@ -300,6 +302,7 @@ au FileType nerdtree cnoreabbrev <buffer> BD <nop>
 " }}}
 
 " CtrlP Setup {{{
+let g:ctrlp_working_path_mode = 0
 nnoremap <silent> <space> :CtrlPBuffer<cr>
 " }}}
 
