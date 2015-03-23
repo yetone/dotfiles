@@ -12,7 +12,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugins {{{
-Plug 'git://gitorious.org/vim-for-qt-kde/vim-qmake.git'
 Plug 'biskark/vim-ultimate-colorscheme-utility'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Valloric/vim-operator-highlight'
@@ -26,7 +25,7 @@ Plug 'Twinside/vim-haskellConceal'
 Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'zerowidth/vim-copy-as-rtf'
-"Plug 'suan/vim-instant-markdown'
+Plug 'suan/vim-instant-markdown'
 Plug 'idris-hackers/idris-vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'junegunn/limelight.vim'
@@ -40,6 +39,7 @@ Plug 'scrooloose/syntastic'
 Plug 'marijnh/tern_for_vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'djoshea/vim-autoread'
 Plug 'scrooloose/nerdtree'
 Plug 'tikhomirov/vim-glsl'
 Plug 'Shougo/vimshell.vim'
@@ -84,6 +84,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'mattn/gist-vim'
 Plug 'oblitum/frawor'
+Plug 'suy/vim-qmake'
 Plug 'fatih/vim-go'
 Plug 'dahu/vimple'
 Plug 'dag/vim2hs'
@@ -239,6 +240,8 @@ au VimEnter,ColorScheme * exec 'hi! SyntasticErrorSign guifg=red ctermfg=red ' .
 au VimEnter,ColorScheme * exec 'hi! SyntasticWarningSign guifg=yellow ctermfg=yellow ' . s:getbg('SyntasticWarningLine')
 au VimEnter,ColorScheme * exec 'hi! SyntasticError ' . s:getbg('SyntasticErrorLine')
 au VimEnter,ColorScheme * exec 'hi! SyntasticWarning ' . s:getbg('SyntasticWarningLine')
+
+let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go"] }
 " }}}
 
 " delimitMate Setup {{{
@@ -303,6 +306,7 @@ au FileType nerdtree cnoreabbrev <buffer> BD <nop>
 
 " CtrlP Setup {{{
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_follow_symlinks = 1
 nnoremap <silent> <space> :CtrlPBuffer<cr>
 " }}}
 
@@ -368,6 +372,10 @@ au  User GoyoEnter nested call <SID>goyo_enter()
 au  User GoyoLeave nested call <SID>goyo_leave()
 
 nnoremap <leader>g :Goyo<CR>
+" }}}
+
+" vim-instant-markdown Setup {{{
+let g:instant_markdown_autostart = 0
 " }}}
 
 " Fix borders of fullscreen GUI {{{
