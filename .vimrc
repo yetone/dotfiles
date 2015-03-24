@@ -152,6 +152,11 @@ colors seoul256
 hi! link Conceal Normal
 " }}}
 
+" Airline Setup {{{
+let g:airline_theme = 'wombat'
+let g:airline_powerline_fonts = 1
+" }}}
+
 " File Type Settings {{{
 
 " C++
@@ -177,11 +182,6 @@ let g:rubycomplete_classes_in_global = 1
 
 " Rust
 let g:racer_cmd = "/opt/src/racer/target/racer"
-" }}}
-
-" Airline Setup {{{
-let g:airline_theme = 'wombat'
-let g:airline_powerline_fonts = 1
 " }}}
 
 " format.vim Setup {{{
@@ -376,6 +376,10 @@ nnoremap <leader>g :Goyo<CR>
 
 " vim-instant-markdown Setup {{{
 let g:instant_markdown_autostart = 0
+" }}}
+
+" vim-operator-highlight Setup {{{
+let g:ophigh_highlight_link_group = 'Keyword'
 " }}}
 
 " Fix borders of fullscreen GUI {{{
