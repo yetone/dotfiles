@@ -20,8 +20,9 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
+"Plug 'enomsg/vim-haskellConcealPlus'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'Twinside/vim-haskellConceal'
+Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'zerowidth/vim-copy-as-rtf'
@@ -36,7 +37,7 @@ Plug 'embear/vim-localvimrc'
 Plug 'junegunn/seoul256.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
-Plug 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'djoshea/vim-autoread'
@@ -59,15 +60,15 @@ Plug 'peterhoeg/vim-qml'
 Plug 'gilligan/vim-lldb'
 Plug 'bling/vim-airline'
 Plug 'rizzatti/dash.vim'
-"Plug 'jeaye/color_coded', { 'do': 'make' }
+"Plug 'jeaye/color_coded', { 'do': './configure && make' }
 Plug 'oblitum/formatvim'
 Plug 'junegunn/goyo.vim'
 Plug 'ogier/guessindent'
 Plug 'basyura/bitly.vim'
 Plug 'rhysd/wandbox-vim'
+Plug 'eagletmt/neco-ghc'
 Plug 'tpope/vim-eunuch'
 Plug 'SirVer/ultisnips'
-Plug 'ujihisa/neco-ghc'
 Plug 'mattn/webapi-vim'
 Plug 'cespare/vim-toml'
 Plug 'mileszs/ack.vim'
@@ -75,6 +76,7 @@ Plug 'oblitum/bufkill'
 Plug 'morhetz/gruvbox'
 Plug 'drn/zoomwin-vim'
 Plug 'xolox/vim-notes'
+Plug 'xolox/vim-shell'
 Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
 Plug 'wting/rust.vim'
@@ -84,10 +86,10 @@ Plug 'kien/ctrlp.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'mattn/gist-vim'
 Plug 'oblitum/frawor'
+Plug 'nicwest/QQ.vim'
 Plug 'suy/vim-qmake'
 Plug 'fatih/vim-go'
 Plug 'dahu/vimple'
-Plug 'dag/vim2hs'
 " }}}
 
 call plug#end()
@@ -100,7 +102,7 @@ runtime! plugin/sensible.vim
 
 " General Settings {{{
 set regexpengine=1          " set old regexp engine
-set noswapfile              " No swap files
+set noswapfile              " no swap files
 set hidden                  " hide buffer without notice
 set hlsearch                " highlight the last searched term
 set virtualedit=all         " let us walk in limbo
@@ -112,13 +114,14 @@ set clipboard=unnamed       " for simplified clipboard copy/paste
 set noshowmode              " hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowcmd               " disable blinking command feedback in bottom-right corner
 set mouse=a                 " enable mouse to get scrolling
-set vb t_vb=                " No visual bell
-set pumheight=30            " Limit popup menu height
+set vb t_vb=                " no visual bell
+set pumheight=30            " limit popup menu height
+set concealcursor=nv        " expand concealed characters in insert mode solely
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
 
-au InsertEnter * :let @/='' " Disable highlighted search on insert mode
-au InsertLeave * :let @/='' " Enable it back
-au GUIEnter * set vb t_vb=  " Enforces no visual bell for GUI
+au InsertEnter * :let @/='' " disable highlighted search on insert mode
+au InsertLeave * :let @/='' " enable it back
+au GUIEnter * set vb t_vb=  " enforces no visual bell for GUI
 
 " Open QuickFix horizontally with line wrap and not avoiding long lines
 au FileType qf wincmd J | setlocal wrap textwidth=0
@@ -133,7 +136,7 @@ set wildignore+=*.pyc       " add ignored extension
 " GUI Settings {{{
 if has('gui_running')
     " Set default GUI font
-    set guifont=monofur\ for\ Powerline:h18
+    set guifont=monofur\ for\ Powerline:h15
 
     " Remove scroll bars
     set guioptions-=L
@@ -194,7 +197,7 @@ let g:format_HTMLAdditionalCSS = '
 \        url("http://typefront.com/fonts/825592811.ttf") format("truetype"),
 \        url("http://typefront.com/fonts/825592811.svg") format("svg");
 \ }
-\ body { font-family: "monofur", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, monospace; font-size:13.3pt; -webkit-font-smoothing: antialiased; }'
+\ body { font-family: "monofur", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, monospace; font-size:12pt; -webkit-font-smoothing: antialiased; }'
 " }}}
 
 " Syntastic Setup {{{
@@ -380,6 +383,11 @@ let g:instant_markdown_autostart = 0
 
 " vim-operator-highlight Setup {{{
 let g:ophigh_highlight_link_group = 'Keyword'
+let g:ophigh_filetypes_to_ignore = { "haskell": 1 }
+" }}}
+
+" tern_for_vim Setup {{{
+let g:tern_show_signature_in_pum = 1
 " }}}
 
 " Fix borders of fullscreen GUI {{{
