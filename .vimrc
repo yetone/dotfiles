@@ -25,7 +25,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'zerowidth/vim-copy-as-rtf'
 Plug 'suan/vim-instant-markdown'
 Plug 'idris-hackers/idris-vim'
 Plug 'rhysd/vim-clang-format'
@@ -57,7 +56,7 @@ Plug 'godlygeek/tabular'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-abolish'
 Plug 'peterhoeg/vim-qml'
-Plug 'gilligan/vim-lldb'
+"Plug 'gilligan/vim-lldb'
 Plug 'bling/vim-airline'
 Plug 'rizzatti/dash.vim'
 "Plug 'jeaye/color_coded', { 'do': './configure && make' }
@@ -153,11 +152,13 @@ endif
 " Colorscheme {{{
 let g:seoul256_background = 235
 colors seoul256
+"colors seoul256-light
 hi! link Conceal Normal
 " }}}
 
 " Airline Setup {{{
 let g:airline_theme = 'wombat'
+"let g:airline_theme = 'tomorrow'
 let g:airline_powerline_fonts = 1
 " }}}
 
@@ -319,12 +320,10 @@ let g:clang_format#style_options = {
             \ "AccessModifierOffset": -4,
             \ "AllowShortLoopsOnASingleLine": "false",
             \ "AllowShortBlocksOnASingleLine" : "false",
-            \ "AllowShortFunctionsOnASingleLine": "None",
             \ "AllowShortIfStatementsOnASingleLine": "false",
-            \ "AlwaysBreakTemplateDeclarations": "true",
+            \ "AlwaysBreakTemplateDeclarations": "false",
             \ "DerivePointerBinding": "false",
             \ "PointerBindsToType": "false",
-            \ "BinPackParameters" : "false",
             \ "ColumnLimit": 80,
             \ "TabWidth": 4,
             \ "Standard": "C++11" }
