@@ -22,6 +22,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 "Plug 'enomsg/vim-haskellConcealPlus'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
@@ -48,10 +49,12 @@ Plug 'raichoo/haskell-vim'
 Plug 'tpope/vim-obsession'
 Plug 'thinca/vim-quickrun'
 Plug 'Soares/longline.vim'
+Plug 'Slava/vim-spacebars'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-abolish'
@@ -66,10 +69,12 @@ Plug 'ogier/guessindent'
 Plug 'basyura/bitly.vim'
 Plug 'rhysd/wandbox-vim'
 Plug 'eagletmt/neco-ghc'
+Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-eunuch'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/webapi-vim'
 Plug 'cespare/vim-toml'
+Plug 'tpope/vim-ragtag'
 Plug 'mileszs/ack.vim'
 Plug 'oblitum/bufkill'
 Plug 'morhetz/gruvbox'
@@ -87,6 +92,7 @@ Plug 'mattn/gist-vim'
 Plug 'oblitum/frawor'
 Plug 'nicwest/QQ.vim'
 Plug 'suy/vim-qmake'
+Plug 'elzr/vim-json'
 Plug 'fatih/vim-go'
 Plug 'dahu/vimple'
 " }}}
@@ -246,7 +252,7 @@ au VimEnter,ColorScheme * exec 'hi! SyntasticWarningSign guifg=yellow ctermfg=ye
 au VimEnter,ColorScheme * exec 'hi! SyntasticError ' . s:getbg('SyntasticErrorLine')
 au VimEnter,ColorScheme * exec 'hi! SyntasticWarning ' . s:getbg('SyntasticWarningLine')
 
-let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go"] }
+let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go", "html"] }
 " }}}
 
 " delimitMate Setup {{{
@@ -382,12 +388,13 @@ let g:instant_markdown_autostart = 0
 " }}}
 
 " vim-operator-highlight Setup {{{
-let g:ophigh_highlight_link_group = 'Keyword'
-let g:ophigh_filetypes_to_ignore = { "haskell": 1 }
+"let g:ophigh_highlight_link_group = 'Keyword'
+let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1 }
 " }}}
 
 " tern_for_vim Setup {{{
 let g:tern_show_signature_in_pum = 1
+let g:tern_show_argument_hints = 'on_move'
 " }}}
 
 " Fix borders of fullscreen GUI {{{
