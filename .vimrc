@@ -267,7 +267,7 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_semantic_triggers = {'haskell' : ['.'], 'rust' : ['::', '.']}
+let g:ycm_semantic_triggers = { 'haskell' : ['.'], 'rust' : ['::', '.'] }
 nnoremap <leader>h :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>e :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
@@ -388,7 +388,7 @@ let g:instant_markdown_autostart = 0
 
 " vim-operator-highlight Setup {{{
 "let g:ophigh_highlight_link_group = 'Keyword'
-let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1 }
+let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1, "python": 1 }
 " }}}
 
 " tern_for_vim Setup {{{
