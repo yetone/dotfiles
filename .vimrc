@@ -81,6 +81,7 @@ Plug 'morhetz/gruvbox'
 Plug 'drn/zoomwin-vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-shell'
+Plug 'phildawes/racer'
 Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
 Plug 'wting/rust.vim'
@@ -192,7 +193,7 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 
 " Rust
-let g:racer_cmd = "/opt/src/racer/target/racer"
+let g:racer_cmd = "/opt/src/racer/target/release/racer"
 " }}}
 
 " format.vim Setup {{{
@@ -268,7 +269,7 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:ycm_semantic_triggers = {'haskell' : ['.'], 'rust' : ['::', '.']}
 nnoremap <leader>h :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>e :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
