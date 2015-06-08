@@ -82,7 +82,7 @@ Plug 'morhetz/gruvbox'
 Plug 'drn/zoomwin-vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-shell'
-Plug 'phildawes/racer'
+Plug 'phildawes/racer', { 'do': 'cargo build --release' }
 Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
 Plug 'wting/rust.vim'
@@ -191,7 +191,7 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 
 " Rust
-let g:racer_cmd = "/opt/src/racer/target/release/racer"
+let g:racer_cmd = "~/.vim/plugged/racer/target/release/racer"
 " }}}
 
 " format.vim Setup {{{
