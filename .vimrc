@@ -33,6 +33,7 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'rhysd/vim-clang-format'
 Plug 'junegunn/limelight.vim'
 Plug 'dietsche/vim-lastplace'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'oblitum/YouCompleteMe'
 Plug 'embear/vim-localvimrc'
 "Plug 'vim-pandoc/vim-pandoc'
@@ -52,6 +53,7 @@ Plug 'tpope/vim-obsession'
 Plug 'thinca/vim-quickrun'
 Plug 'Soares/longline.vim'
 Plug 'Slava/vim-spacebars'
+Plug 'groenewege/vim-less'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-fugitive'
@@ -389,12 +391,20 @@ let g:instant_markdown_autostart = 0
 
 " vim-operator-highlight Setup {{{
 "let g:ophigh_highlight_link_group = 'Keyword'
-let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1, "python": 1 }
+let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1, "python": 1, "html": 1, "css": 1, "scss": 1 }
 " }}}
 
 " tern_for_vim Setup {{{
 let g:tern_show_signature_in_pum = 1
 let g:tern_show_argument_hints = 'on_move'
+" }}}
+
+" vim-css3-syntax Setup {{{
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
 " }}}
 
 " Fix borders of fullscreen GUI {{{
