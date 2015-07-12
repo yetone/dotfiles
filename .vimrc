@@ -74,6 +74,7 @@ Plug 'basyura/bitly.vim'
 Plug 'rhysd/wandbox-vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'tmhedberg/matchit'
+Plug 'fmoralesc/vim-pad'
 Plug 'tpope/vim-eunuch'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/webapi-vim'
@@ -83,7 +84,6 @@ Plug 'mileszs/ack.vim'
 Plug 'oblitum/bufkill'
 Plug 'morhetz/gruvbox'
 Plug 'drn/zoomwin-vim'
-Plug 'xolox/vim-notes'
 Plug 'xolox/vim-shell'
 Plug 'phildawes/racer', { 'do': 'cargo build --release' }
 Plug 'xolox/vim-misc'
@@ -344,8 +344,8 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#completions_enabled = 0
 " }}}
 
-" vim-notes Setup {{{
-let g:notes_directories = ['~/Google Drive/Notes']
+" vim-pad Setup {{{
+let g:pad#dir = '~/Google Drive/Notes'
 " }}}
 
 " ZoomWin Setup {{{
