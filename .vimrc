@@ -391,6 +391,7 @@ let g:instant_markdown_autostart = 0
 
 " vim-markdown Setup {{{
 let g:markdown_enable_mappings = 0
+let g:markdown_enable_folding = 1
 " }}}
 
 " vim-operator-highlight Setup {{{
