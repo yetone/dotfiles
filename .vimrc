@@ -345,7 +345,7 @@ let g:jedi#completions_enabled = 0
 " }}}
 
 " vim-pad Setup {{{
-let g:pad#dir = '~/Google Drive/Notes'
+let g:pad#dir = '~/Dropbox/Notes'
 " }}}
 
 " ZoomWin Setup {{{
