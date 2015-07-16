@@ -27,6 +27,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'suan/vim-instant-markdown'
+Plug 'gabrielelana/vim-markdown'
 Plug 'idris-hackers/idris-vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'rhysd/vim-clang-format'
@@ -54,7 +55,6 @@ Plug 'Soares/longline.vim'
 Plug 'Slava/vim-spacebars'
 Plug 'groenewege/vim-less'
 Plug 'honza/vim-snippets'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -73,17 +73,16 @@ Plug 'basyura/bitly.vim'
 Plug 'rhysd/wandbox-vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'tmhedberg/matchit'
+Plug 'fmoralesc/vim-pad'
 Plug 'tpope/vim-eunuch'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/webapi-vim'
 Plug 'cespare/vim-toml'
 Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-liquid'
 Plug 'mileszs/ack.vim'
 Plug 'oblitum/bufkill'
 Plug 'morhetz/gruvbox'
 Plug 'drn/zoomwin-vim'
-Plug 'xolox/vim-notes'
 Plug 'xolox/vim-shell'
 Plug 'phildawes/racer', { 'do': 'cargo build --release' }
 Plug 'xolox/vim-misc'
@@ -347,8 +346,8 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#completions_enabled = 0
 " }}}
 
-" vim-notes Setup {{{
-let g:notes_directories = ['~/Google Drive/Notes']
+" vim-pad Setup {{{
+let g:pad#dir = '~/Dropbox/Notes'
 " }}}
 
 " ZoomWin Setup {{{
@@ -390,6 +389,11 @@ nnoremap <leader>g :Goyo<CR>
 
 " vim-instant-markdown Setup {{{
 let g:instant_markdown_autostart = 0
+" }}}
+
+" vim-markdown Setup {{{
+let g:markdown_enable_mappings = 0
+let g:markdown_enable_folding = 1
 " }}}
 
 " vim-operator-highlight Setup {{{
