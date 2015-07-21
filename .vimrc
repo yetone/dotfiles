@@ -41,6 +41,7 @@ Plug 'embear/vim-localvimrc'
 "Plug 'vim-pandoc/vim-pandoc'
 Plug 'junegunn/seoul256.vim'
 Plug 'pgdouyon/vim-evanesco'
+Plug 'idanarye/vim-vebugger'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
@@ -414,6 +415,10 @@ augroup END
 " vim-android Setup {{{
 let g:android_sdk_path = '/opt/android/sdk'
 let g:gradle_path = '/usr/local/bin'
+" }}}
+
+" Vebugger Setup {{{
+let g:vebugger_leader='<Leader>d'
 " }}}
 
 " Fix borders of fullscreen GUI {{{
