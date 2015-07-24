@@ -418,7 +418,11 @@ let g:gradle_path = '/usr/local/bin'
 " }}}
 
 " Vebugger Setup {{{
-let g:vebugger_leader='<Leader>d'
+let g:vebugger_leader = '<Leader>d'
+" }}}
+
+" better-whitespace Setup {{{
+let g:better_whitespace_filetypes_blacklist = ['vimfiler']
 " }}}
 
 " Fix borders of fullscreen GUI {{{
