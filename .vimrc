@@ -126,6 +126,7 @@ set cpoptions+=$            " dollar sign while changing
 set foldmethod=marker       " folds on marks
 set nowrap                  " don't wrap lines
 set textwidth=80            " set expected line width to 80
+set formatoptions-=tc       " disable auto-wrapping enabled by textwidth
 set clipboard=unnamed       " for simplified clipboard copy/paste
 set noshowmode              " hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowcmd               " disable blinking command feedback in bottom-right corner
