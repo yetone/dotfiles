@@ -21,6 +21,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 "Plug 'enomsg/vim-haskellConcealPlus'
+Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'powerman/vim-plugin-AnsiEsc'
@@ -38,14 +39,16 @@ Plug 'oblitum/YouCompleteMe'
 Plug 'embear/vim-localvimrc'
 "Plug 'vim-pandoc/vim-pandoc'
 Plug 'junegunn/seoul256.vim'
+Plug 'pgdouyon/vim-evanesco'
+Plug 'idanarye/vim-vebugger'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'djoshea/vim-autoread'
-Plug 'scrooloose/nerdtree'
 Plug 'tikhomirov/vim-glsl'
+Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/vimshell.vim'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'raichoo/haskell-vim'
@@ -54,10 +57,12 @@ Plug 'thinca/vim-quickrun'
 Plug 'Soares/longline.vim'
 Plug 'Slava/vim-spacebars'
 Plug 'groenewege/vim-less'
+Plug 'hsanson/vim-android'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 Plug 'godlygeek/tabular'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-abolish'
@@ -79,12 +84,13 @@ Plug 'SirVer/ultisnips'
 Plug 'mattn/webapi-vim'
 Plug 'cespare/vim-toml'
 Plug 'tpope/vim-ragtag'
+Plug 'Shougo/unite.vim'
 Plug 'mileszs/ack.vim'
-Plug 'oblitum/bufkill'
 Plug 'morhetz/gruvbox'
 Plug 'drn/zoomwin-vim'
 Plug 'xolox/vim-shell'
 Plug 'phildawes/racer', { 'do': 'cargo build --release' }
+Plug 'keith/swift.vim'
 Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
 Plug 'wting/rust.vim'
@@ -119,6 +125,7 @@ set cpoptions+=$            " dollar sign while changing
 set foldmethod=marker       " folds on marks
 set nowrap                  " don't wrap lines
 set textwidth=80            " set expected line width to 80
+set formatoptions-=tc       " disable auto-wrapping enabled by textwidth
 set clipboard=unnamedplus   " for simplified clipboard copy/paste
 set noshowmode              " hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowcmd               " disable blinking command feedback in bottom-right corner
@@ -129,8 +136,6 @@ set concealcursor=nv        " expand concealed characters in insert mode solely
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
 set t_ut=                   " Fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
 
-au InsertEnter * :let @/='' " disable highlighted search on insert mode
-au InsertLeave * :let @/='' " enable it back
 au GUIEnter * set vb t_vb=  " enforces no visual bell for GUI
 
 " Open QuickFix horizontally with line wrap and not avoiding long lines
@@ -197,6 +202,9 @@ let g:rubycomplete_classes_in_global = 1
 
 " Rust
 let g:racer_cmd = "~/.vim/plugged/racer/target/release/racer"
+
+" Java
+autocmd FileType java set omnifunc=javacomplete#Complete
 " }}}
 
 " format.vim Setup {{{
@@ -303,19 +311,11 @@ let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! 
 let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 " }}}
 
-" NERDTree Setup {{{
+" VimFiler Setup {{{
 
-let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', '\.egg-info$', '\.DS_Store$', '^Session\.vim']
-let NERDTreeShowBookmarks=1
-let NERDTreeHightlightCursorline=1
-
-" Map NERDTreeToggle to convenient key
-nnoremap <silent> <c-n> :NERDTreeToggle<cr>
-
-" Prevent :bd inside NERDTree buffer
-au FileType nerdtree cnoreabbrev <buffer> bd <nop>
-au FileType nerdtree cnoreabbrev <buffer> BD <nop>
+let g:vimfiler_as_default_explorer = 1
+nnoremap <silent> <c-x> :VimFiler<cr>
+nnoremap <silent> <c-n> :VimFilerExplorer<cr>
 
 " }}}
 
@@ -348,6 +348,7 @@ let g:jedi#completions_enabled = 0
 
 " vim-pad Setup {{{
 let g:pad#dir = '~/Dropbox/Notes'
+let g:pad#open_in_split = 0
 " }}}
 
 " ZoomWin Setup {{{
@@ -412,6 +413,19 @@ augroup VimCSS3Syntax
 
   autocmd FileType css setlocal iskeyword+=-
 augroup END
+" }}}
+
+" vim-android Setup {{{
+let g:android_sdk_path = '/opt/android/sdk'
+let g:gradle_path = '/usr/local/bin'
+" }}}
+
+" Vebugger Setup {{{
+let g:vebugger_leader = '<Leader>d'
+" }}}
+
+" better-whitespace Setup {{{
+let g:better_whitespace_filetypes_blacklist = ['vimfiler']
 " }}}
 
 " Fix borders of fullscreen GUI {{{
