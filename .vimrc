@@ -2,16 +2,17 @@
 
 " Automatic installation {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !mkdir -p ~/.vim/autoload
-  silent !curl -fLo ~/.vim/autoload/plug.vim
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  au VimEnter * PlugInstall
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    au VimEnter * PlugInstall
 endif
 " }}}
 
 call plug#begin('~/.vim/plugged')
 
 " Plugins {{{
+Plug 'davidhalter/jedi-vim' | Plug 'lambdalisue/vim-pyenv'
 Plug 'biskark/vim-ultimate-colorscheme-utility'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Valloric/vim-operator-highlight'
@@ -22,8 +23,10 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 "Plug 'enomsg/vim-haskellConcealPlus'
 Plug 'artur-shaik/vim-javacomplete2'
+Plug 'whatyouhide/vim-lengthmatters'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
@@ -36,6 +39,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'dietsche/vim-lastplace'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'oblitum/YouCompleteMe'
+"Plug 'Shougo/neocomplete.vim'
 Plug 'embear/vim-localvimrc'
 "Plug 'vim-pandoc/vim-pandoc'
 Plug 'junegunn/seoul256.vim'
@@ -45,7 +49,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'edkolev/tmuxline.vim'
-Plug 'davidhalter/jedi-vim'
 Plug 'djoshea/vim-autoread'
 Plug 'tikhomirov/vim-glsl'
 Plug 'Shougo/vimfiler.vim'
@@ -54,7 +57,6 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'raichoo/haskell-vim'
 Plug 'tpope/vim-obsession'
 Plug 'thinca/vim-quickrun'
-Plug 'Soares/longline.vim'
 Plug 'Slava/vim-spacebars'
 Plug 'groenewege/vim-less'
 Plug 'hsanson/vim-android'
@@ -69,7 +71,6 @@ Plug 'tpope/vim-abolish'
 Plug 'peterhoeg/vim-qml'
 "Plug 'gilligan/vim-lldb'
 Plug 'bling/vim-airline'
-Plug 'rizzatti/dash.vim'
 "Plug 'jeaye/color_coded', { 'do': './configure && make' }
 Plug 'oblitum/formatvim'
 Plug 'junegunn/goyo.vim'
@@ -124,8 +125,6 @@ set virtualedit=all         " let us walk in limbo
 set cpoptions+=$            " dollar sign while changing
 set foldmethod=marker       " folds on marks
 set nowrap                  " don't wrap lines
-set textwidth=80            " set expected line width to 80
-set formatoptions-=tc       " disable auto-wrapping enabled by textwidth
 set clipboard=unnamedplus   " for simplified clipboard copy/paste
 set noshowmode              " hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowcmd               " disable blinking command feedback in bottom-right corner
@@ -138,11 +137,11 @@ set t_ut=                   " Fix 256 colors in tmux http://sunaku.github.io/vim
 
 au GUIEnter * set vb t_vb=  " enforces no visual bell for GUI
 
-" Open QuickFix horizontally with line wrap and not avoiding long lines
-au FileType qf wincmd J | setlocal wrap textwidth=0
+" Open QuickFix horizontally with line wrap
+au FileType qf wincmd J | setlocal wrap
 
-" Preview window with line wrap and not avoiding long lines
-au WinEnter * if &previewwindow | setlocal wrap textwidth=0 | endif
+" Preview window with line wrap
+au WinEnter * if &previewwindow | setlocal wrap | endif
 
 set wildignore+=CMakeFiles  " add ignored extension
 set wildignore+=*.pyc       " add ignored extension
@@ -204,7 +203,7 @@ let g:rubycomplete_classes_in_global = 1
 let g:racer_cmd = "~/.vim/plugged/racer/target/release/racer"
 
 " Java
-autocmd FileType java set omnifunc=javacomplete#Complete
+au FileType java set omnifunc=javacomplete#Complete
 " }}}
 
 " format.vim Setup {{{
@@ -281,9 +280,35 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_semantic_triggers = { 'haskell' : ['.'], 'rust' : ['::', '.'] }
+if !exists('g:ycm_filetype_specific_completion_to_disable')
+    let g:ycm_filetype_specific_completion_to_disable = {}
+endif
+let g:ycm_filetype_specific_completion_to_disable.python = 1
 nnoremap <leader>h :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>e :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+" }}}
+
+" neocomplete Setup {{{
+let g:neocomplete#enable_at_startup = 1
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+" }}}
+
+" vim-pyenv Setup {{{
+if jedi#init_python()
+    function! s:jedi_auto_force_py_version() abort
+        let major_version = pyenv#python#get_internal_major_version()
+        call jedi#force_py_version(major_version)
+    endfunction
+    augroup vim-pyenv-custom-augroup
+        au! *
+        au User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
+        au User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
+    augroup END
+endif
 " }}}
 
 " Ultisnips Setup {{{
@@ -304,6 +329,7 @@ let g:quickrun_config = {
 
 " localvimrc Setup {{{
 let g:localvimrc_ask = 0
+let g:localvimrc_sandbox = 0
 " }}}
 
 " VimShell Setup {{{
@@ -312,11 +338,8 @@ let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 " }}}
 
 " VimFiler Setup {{{
-
 let g:vimfiler_as_default_explorer = 1
-nnoremap <silent> <c-x> :VimFiler<cr>
-nnoremap <silent> <c-n> :VimFilerExplorer<cr>
-
+nnoremap <leader>x :VimFilerExplorer<cr>
 " }}}
 
 " CtrlP Setup {{{
@@ -342,8 +365,9 @@ au FileType c,cpp,objc,objcpp noremap! <silent> <buffer> <leader>f <c-o>:ClangFo
 " }}}
 
 " Jedi Setup {{{
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = 2
 let g:jedi#auto_vim_configuration = 0
-let g:jedi#completions_enabled = 0
 " }}}
 
 " vim-pad Setup {{{
@@ -359,9 +383,9 @@ nnoremap <leader>z :ZoomWin<CR>
 au BufReadPost * :GuessIndent
 " }}}
 
-" LongLine Setup {{{
-let g:longline_autohl = 1
-let g:longline_matchgroup = 'Visual'
+" lengthmatters Setup {{{
+let g:lengthmatters_excluded = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'vimfiler', 'help', 'qf']
+call lengthmatters#highlight_link_to('Visual')
 " }}}
 
 " Indent Guides Setup {{{
@@ -373,11 +397,11 @@ let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 
 function! s:goyo_enter()
-  silent !tmux set status off
+    silent !tmux set status off
 endfunction
 
 function! s:goyo_leave()
-  silent !tmux set status on
+    silent !tmux set status on
 endfunction
 
 au! User GoyoEnter
@@ -399,7 +423,7 @@ let g:markdown_enable_folding = 1
 
 " vim-operator-highlight Setup {{{
 "let g:ophigh_highlight_link_group = 'Keyword'
-let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1, "python": 1, "html": 1, "css": 1, "scss": 1 }
+let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1, "html": 1, "css": 1, "scss": 1 }
 " }}}
 
 " tern_for_vim Setup {{{
@@ -409,15 +433,14 @@ let g:tern_show_argument_hints = 'on_move'
 
 " vim-css3-syntax Setup {{{
 augroup VimCSS3Syntax
-  autocmd!
-
-  autocmd FileType css setlocal iskeyword+=-
+    au!
+    au FileType css setlocal iskeyword+=-
 augroup END
 " }}}
 
 " vim-android Setup {{{
-let g:android_sdk_path = '/opt/android/sdk'
-let g:gradle_path = '/usr/local/bin'
+let g:android_sdk_path = '/opt/android-sdk'
+let g:gradle_path = '/usr/bin'
 " }}}
 
 " Vebugger Setup {{{
@@ -426,6 +449,18 @@ let g:vebugger_leader = '<Leader>d'
 
 " better-whitespace Setup {{{
 let g:better_whitespace_filetypes_blacklist = ['vimfiler']
+" }}}
+
+" vim-multiple-cursors Setup {{{
+function! Multiple_cursors_before()
+    let g:ycm_auto_trigger = 0
+    silent! exe 'NeoCompleteDisable'
+endfunction
+
+function! Multiple_cursors_after()
+    let g:ycm_auto_trigger = 1
+    silent! exe 'NeoCompleteEnable'
+endfunction
 " }}}
 
 " Fix borders of fullscreen GUI {{{

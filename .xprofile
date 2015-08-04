@@ -1,0 +1,20 @@
+export KEYTIMEOUT=1
+
+export RUST_SRC_PATH=/opt/src/rust/src
+
+if [ -d "$HOME/.pyenv/bin" ]; then PATH=$HOME/.pyenv/bin:$PATH; fi
+if [ -d "$HOME/.rbenv/bin" ]; then PATH=$HOME/.rbenv/bin:$PATH; fi
+if [ -d "$HOME/.cabal/bin" ]; then PATH=$HOME/.cabal/bin:$PATH; fi
+if [ -d "$HOME/.stack/programs/x86_64-linux/ghc-7.10.2/bin" ]; then
+  PATH=$HOME/.stack/programs/x86_64-linux/ghc-7.10.2/bin:$PATH
+fi
+if [ -d "/usr/local/go/bin" ]; then PATH=/usr/local/go/bin:$PATH; fi
+if [ -d "$HOME/.go" ]; then export GOPATH=$HOME/.go; fi
+if [ -n "$GOPATH" ]; then PATH=$GOPATH/bin:$PATH; fi
+if [ -d "$HOME/.bin" ]; then PATH=$HOME/.bin:$PATH; fi
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi

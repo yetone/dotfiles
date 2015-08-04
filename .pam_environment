@@ -1,0 +1,2 @@
+PATH              DEFAULT=/opt/local/bin:${PATH}
+LIBVA_DRIVER_NAME DEFAULT=vdpau
