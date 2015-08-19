@@ -39,8 +39,11 @@ Plug 'rhysd/vim-clang-format'
 Plug 'junegunn/limelight.vim'
 Plug 'dietsche/vim-lastplace'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'oblitum/YouCompleteMe'
-"Plug 'Shougo/neocomplete.vim'
+let completer = 'oblitum/YouCompleteMe'
+if has("python3") && !has("python")
+    let completer = 'Shougo/neocomplete.vim'
+endif
+Plug completer
 Plug 'embear/vim-localvimrc'
 "Plug 'vim-pandoc/vim-pandoc'
 Plug 'junegunn/seoul256.vim'
@@ -364,7 +367,9 @@ au FileType c,cpp,objc,objcpp noremap! <silent> <buffer> <leader>f <c-o>:ClangFo
 " }}}
 
 " Jedi Setup {{{
-let g:jedi#popup_on_dot = 0
+if completer == 'Shougo/neocomplete.vim'
+    let g:jedi#popup_on_dot = 0
+endif
 let g:jedi#show_call_signatures = 2
 let g:jedi#auto_vim_configuration = 0
 " }}}
