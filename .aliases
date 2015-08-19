@@ -1,1 +1,2 @@
-alias rm='trash'
+alias cls=clear
+alias rm=trash
