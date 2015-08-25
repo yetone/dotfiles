@@ -120,6 +120,7 @@ runtime! plugin/sensible.vim
 " }}}
 
 " General Settings {{{
+let mapleader = ','         " changes leader key
 set regexpengine=1          " set old regexp engine
 set noswapfile              " no swap files
 set hidden                  " hide buffer without notice
