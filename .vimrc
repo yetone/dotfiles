@@ -388,8 +388,9 @@ au BufReadPost * :GuessIndent
 " }}}
 
 " lengthmatters Setup {{{
-let g:lengthmatters_excluded = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'vimfiler', 'help', 'qf']
+let g:lengthmatters_on_by_default = 0
 call lengthmatters#highlight_link_to('Visual')
+au FileType c,cpp,go :LengthmattersEnable
 " }}}
 
 " Indent Guides Setup {{{
