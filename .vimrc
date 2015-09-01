@@ -69,6 +69,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
+Plug 'romainl/Apprentice'
 Plug 'godlygeek/tabular'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-abolish'
@@ -170,12 +171,12 @@ endif
 
 " Colorscheme {{{
 let g:seoul256_background = 235
-colors seoul256
+colors apprentice
 hi! link Conceal Normal
 " }}}
 
 " Airline Setup {{{
-let g:airline_theme = 'wombat'
+let g:airline_theme = 'hybrid'
 let g:airline_powerline_fonts = 1
 " }}}
 
