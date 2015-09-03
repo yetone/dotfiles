@@ -121,7 +121,7 @@ runtime! plugin/sensible.vim
 " }}}
 
 " General Settings {{{
-let mapleader = ','         " changes leader key
+let mapleader = ' '         " changes leader key
 set regexpengine=1          " set old regexp engine
 set noswapfile              " no swap files
 set hidden                  " hide buffer without notice
@@ -287,9 +287,9 @@ if !exists('g:ycm_filetype_specific_completion_to_disable')
     let g:ycm_filetype_specific_completion_to_disable = {}
 endif
 let g:ycm_filetype_specific_completion_to_disable.python = 1
-nnoremap <leader>h :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>e :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>h :YcmCompleter GoToDeclaration<cr>
+nnoremap <leader>? :YcmCompleter GoToDefinitionElseDeclaration<cr>
+nnoremap <leader>d :YcmCompleter GoToDefinition<cr>
 " }}}
 
 " neocomplete Setup {{{
@@ -342,13 +342,13 @@ let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 
 " VimFiler Setup {{{
 let g:vimfiler_as_default_explorer = 1
-nnoremap <leader>x :VimFilerExplorer<cr>
+nnoremap <leader>f :VimFilerExplorer<cr>
 " }}}
 
 " CtrlP Setup {{{
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_follow_symlinks = 1
-nnoremap <silent> <space> :CtrlPBuffer<cr>
+nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 " }}}
 
 " ClangFormat Setup {{{
@@ -363,8 +363,7 @@ let g:clang_format#style_options = {
             \ "ColumnLimit": 80,
             \ "TabWidth": 4,
             \ "Standard": "C++11" }
-au FileType c,cpp,objc,objcpp noremap  <silent> <buffer> <leader>f :ClangFormat<cr>
-au FileType c,cpp,objc,objcpp noremap! <silent> <buffer> <leader>f <c-o>:ClangFormat<cr>
+au FileType c,cpp,objc,objcpp noremap  <silent> <buffer> <leader>= :ClangFormat<cr>
 " }}}
 
 " Jedi Setup {{{
@@ -381,7 +380,7 @@ let g:pad#open_in_split = 0
 " }}}
 
 " ZoomWin Setup {{{
-nnoremap <leader>z :ZoomWin<CR>
+nnoremap <leader>z :ZoomWin<cr>
 " }}}
 
 " GuessIndent Setup {{{
@@ -415,7 +414,7 @@ au! User GoyoLeave
 au  User GoyoEnter nested call <SID>goyo_enter()
 au  User GoyoLeave nested call <SID>goyo_leave()
 
-nnoremap <leader>g :Goyo<CR>
+nnoremap <leader>g :Goyo<cr>
 " }}}
 
 " vim-instant-markdown Setup {{{
@@ -450,7 +449,7 @@ let g:gradle_path = '/usr/bin'
 " }}}
 
 " Vebugger Setup {{{
-let g:vebugger_leader = '<Leader>d'
+let g:vebugger_leader = '<leader>v'
 " }}}
 
 " better-whitespace Setup {{{
