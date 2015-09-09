@@ -1,2 +1,3 @@
 alias cls=clear
 alias rm=trash
+alias vimpy3=/opt/vim-for-python3/bin/vim
