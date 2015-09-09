@@ -1,1 +1,2 @@
 alias cls=clear
+alias vimpy3=/opt/vim-for-python3/bin/vim
