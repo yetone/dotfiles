@@ -84,6 +84,7 @@ Plug 'rhysd/wandbox-vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'tmhedberg/matchit'
 Plug 'fmoralesc/vim-pad'
+Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-eunuch'
 Plug 'SirVer/ultisnips'
 Plug 'mattn/webapi-vim'
@@ -466,6 +467,10 @@ function! Multiple_cursors_after()
     let g:ycm_auto_trigger = 1
     silent! exe 'NeoCompleteEnable'
 endfunction
+" }}}
+
+" TagBar Setup {{{
+nnoremap <leader>t :TagbarToggle<cr>
 " }}}
 
 " Fix borders of fullscreen GUI {{{
