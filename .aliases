@@ -1,2 +1,3 @@
 alias cls=clear
+alias gdb='/usr/bin/gdb -silent'
 alias vimpy3=/opt/vim-for-python3/bin/vim
