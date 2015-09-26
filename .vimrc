@@ -54,6 +54,7 @@ Plug 'scrooloose/syntastic'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'djoshea/vim-autoread'
+Plug 'racer-rust/vim-racer'
 Plug 'tikhomirov/vim-glsl'
 Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/vimshell.vim'
@@ -97,7 +98,6 @@ Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'drn/zoomwin-vim'
 Plug 'xolox/vim-shell'
-Plug 'phildawes/racer', { 'do': 'cargo build --release' }
 Plug 'keith/swift.vim'
 Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
@@ -205,7 +205,7 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 
 " Rust
-let g:racer_cmd = "~/.vim/plugged/racer/target/release/racer"
+let g:racer_cmd = "/opt/src/racer/target/release/racer"
 
 " Java
 au FileType java set omnifunc=javacomplete#Complete
