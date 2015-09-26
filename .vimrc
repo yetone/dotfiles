@@ -32,7 +32,6 @@ Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'zerowidth/vim-copy-as-rtf'
 Plug 'suan/vim-instant-markdown'
-Plug 'gabrielelana/vim-markdown'
 Plug 'idris-hackers/idris-vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'rhysd/vim-clang-format'
@@ -422,11 +421,6 @@ nnoremap <leader>g :Goyo<cr>
 
 " vim-instant-markdown Setup {{{
 let g:instant_markdown_autostart = 0
-" }}}
-
-" vim-markdown Setup {{{
-let g:markdown_enable_mappings = 0
-let g:markdown_enable_folding = 1
 " }}}
 
 " vim-operator-highlight Setup {{{
