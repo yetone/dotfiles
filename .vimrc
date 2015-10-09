@@ -17,7 +17,6 @@ Plug 'biskark/vim-ultimate-colorscheme-utility'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Valloric/vim-operator-highlight'
 Plug 'pbrisbin/vim-syntax-shakespeare'
-Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
@@ -45,7 +44,6 @@ endif
 Plug completer
 Plug 'embear/vim-localvimrc'
 "Plug 'vim-pandoc/vim-pandoc'
-Plug 'junegunn/seoul256.vim'
 Plug 'pgdouyon/vim-evanesco'
 Plug 'idanarye/vim-vebugger'
 Plug 'Raimondi/delimitMate'
@@ -94,7 +92,6 @@ Plug 'cespare/vim-toml'
 Plug 'tpope/vim-ragtag'
 Plug 'Shougo/unite.vim'
 Plug 'mileszs/ack.vim'
-Plug 'morhetz/gruvbox'
 Plug 'drn/zoomwin-vim'
 Plug 'xolox/vim-shell'
 Plug 'keith/swift.vim'
@@ -170,7 +167,6 @@ endif
 " }}}
 
 " Colorscheme {{{
-let g:seoul256_background = 235
 colors apprentice
 hi! link Conceal Normal
 " }}}
