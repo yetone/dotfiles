@@ -50,7 +50,7 @@ Plug 'idanarye/vim-vebugger'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'racer-rust/vim-racer'
 Plug 'tikhomirov/vim-glsl'
