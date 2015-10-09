@@ -344,6 +344,7 @@ let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 " VimFiler Setup {{{
 let g:vimfiler_as_default_explorer = 1
 nnoremap <leader>f :VimFilerExplorer<cr>
+au FileType vimfiler nmap <silent><buffer> <2-LeftMouse> <Plug>(vimfiler_smart_l)
 " }}}
 
 " CtrlP Setup {{{
