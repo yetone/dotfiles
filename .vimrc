@@ -135,7 +135,8 @@ set vb t_vb=                " no visual bell
 set pumheight=30            " limit popup menu height
 set concealcursor=nv        " expand concealed characters in insert mode solely
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4 " space for tabs by default
-set t_ut=                   " Fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
+set t_ut=                   " fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
+set spelllang=en,pt_br      " set default spelling languages
 
 au GUIEnter * set vb t_vb=  " enforces no visual bell for GUI
 
