@@ -8,9 +8,9 @@ flags = [
 '-pedantic',
 '-std=c++1z',
 '-stdlib=libc++',
-'-isystem', '/opt/llvm/include/c++/v1',
+'-isystem', '/usr/include/c++/v1',
 '-isystem', '/usr/local/include',
-'-isystem', '/opt/llvm/lib/clang/3.7.0/include',
+'-isystem', '/usr/lib/clang/3.7.0/include',
 '-isystem', '/usr/include',
 ]
 
