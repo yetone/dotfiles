@@ -14,7 +14,7 @@ call plug#begin('~/.vim/plugged')
 " Plugins {{{
 Plug 'davidhalter/jedi-vim' | Plug 'lambdalisue/vim-pyenv'
 Plug 'biskark/vim-ultimate-colorscheme-utility'
-"Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Valloric/vim-operator-highlight'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -73,7 +73,7 @@ Plug 'tpope/vim-abolish'
 Plug 'peterhoeg/vim-qml'
 "Plug 'gilligan/vim-lldb'
 Plug 'bling/vim-airline'
-Plug 'jeaye/color_coded', { 'do': 'cmake . && make && make install' }
+"Plug 'jeaye/color_coded', { 'do': 'cmake . && make && make install' }
 Plug 'oblitum/formatvim'
 Plug 'junegunn/goyo.vim'
 Plug 'ogier/guessindent'
