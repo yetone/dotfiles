@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/francisco/.bin/caps2esc
+Hidden=false
+X-GNOME-Autostart-enabled=true
+Name=caps2esc
+Comment=converts capslock to esc

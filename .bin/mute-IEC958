@@ -1,0 +1,3 @@
+#!/bin/sh
+# IEC958 Muter!
+amixer -D hw:0 set 'IEC958',16 mute > /dev/null &
