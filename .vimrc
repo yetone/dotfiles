@@ -67,6 +67,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 Plug 'romainl/Apprentice'
+Plug 'rust-lang/rust.vim'
 Plug 'godlygeek/tabular'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-abolish'
@@ -95,7 +96,6 @@ Plug 'xolox/vim-shell'
 Plug 'keith/swift.vim'
 Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
-Plug 'wting/rust.vim'
 Plug 'tpope/vim-haml'
 Plug 'fidian/hexmode'
 Plug 'kien/ctrlp.vim'
@@ -201,6 +201,8 @@ let g:rubycomplete_classes_in_global = 1
 
 " Rust
 let g:racer_cmd = "/opt/src/racer/target/release/racer"
+let g:rustfmt_autosave = 1
+let g:racer_experimental_completer = 1
 
 " Java
 au FileType java set omnifunc=javacomplete#Complete
