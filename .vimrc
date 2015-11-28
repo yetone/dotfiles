@@ -464,6 +464,10 @@ function! Multiple_cursors_after()
 endfunction
 " }}}
 
+" Sayonara Setup {{{
+nnoremap <leader>q :Sayonara!<cr>
+" }}}
+
 " TagBar Setup {{{
 nnoremap <leader>t :TagbarToggle<cr>
 
