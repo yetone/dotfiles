@@ -147,8 +147,12 @@ au FileType qf wincmd J | setlocal wrap
 " Preview window with line wrap
 au WinEnter * if &previewwindow | setlocal wrap | endif
 
-set wildignore+=CMakeFiles  " add ignored extension
-set wildignore+=*.pyc       " add ignored extension
+" Mappings
+nnoremap <leader>l :redraw!<cr>
+
+" Ignored extensions
+set wildignore+=CMakeFiles
+set wildignore+=*.pyc
 " }}}
 
 " GUI Settings {{{
