@@ -218,11 +218,11 @@ au FileType java set omnifunc=javacomplete#Complete
 let g:format_HTMLAdditionalCSS = '
 \ @font-face {
 \   font-family: "monofur";
-\   src: url("http://typefront.com/fonts/825592811.eot");
+\   src: url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.eot");
 \   src: local("☺"),
-\        url("http://typefront.com/fonts/825592811.woff") format("woff"),
-\        url("http://typefront.com/fonts/825592811.ttf") format("truetype"),
-\        url("http://typefront.com/fonts/825592811.svg") format("svg");
+\        url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.woff") format("woff"),
+\        url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.ttf") format("truetype"),
+\        url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.svg") format("svg");
 \ }
 \ body { font-family: "monofur", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, monospace; font-size:12pt; -webkit-font-smoothing: antialiased; }'
 " }}}
