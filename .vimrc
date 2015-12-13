@@ -106,6 +106,7 @@ Plug 'oblitum/frawor'
 Plug 'nicwest/QQ.vim'
 Plug 'suy/vim-qmake'
 Plug 'elzr/vim-json'
+Plug 'lervag/vimtex'
 Plug 'fatih/vim-go'
 Plug 'dahu/vimple'
 " }}}
