@@ -162,8 +162,19 @@ def to_unsigned(value, size=8):
     # being printed as unsigned integers, so a conversion is needed
     return int(value.cast(gdb.Value(0).type)) % (2 ** (size * 8))
 
+def to_string(value):
+    # attempt to convert an inferior value to string; OK when (Python 3 ||
+    # simple ASCII); otherwise (Python 2.7 && not ASCII) encode the string as
+    # utf8
+    try:
+        value_string = str(value)
+    except UnicodeEncodeError:
+        value_string = unicode(value).encode('utf8')
+    return value_string
+
 def format_address(address):
-    return '0x{:016x}'.format(address)
+    pointer_size = gdb.parse_and_eval('$pc').type.sizeof
+    return ('0x{{:0{}x}}').format(pointer_size * 2).format(address)
 
 # Dashboard --------------------------------------------------------------------
 
@@ -187,7 +198,7 @@ class Dashboard(gdb.Command):
         gdb.events.exited.connect(lambda _: self.on_exit())
 
     def on_continue(self):
-        # try to contain the GDB messages is a specified are unless the
+        # try to contain the GDB messages in a specified area unless the
         # dashboard is printed to a separate file
         if self.enabled and self.is_running() and not self.output:
             Dashboard.update_term_width()
@@ -620,6 +631,7 @@ class Source(Dashboard.Module):
     def __init__(self):
         self.file_name = None
         self.source_lines = []
+        self.ts = None
 
     def label(self):
         return 'Source'
@@ -632,8 +644,14 @@ class Source(Dashboard.Module):
             return []
         # reload the source file if changed
         file_name = sal.symtab.fullname()
-        if file_name != self.file_name:
+        ts = None
+        try:
+            ts = os.path.getmtime(file_name)
+        except:
+            pass  # delay error check to open()
+        if file_name != self.file_name or ts and ts > self.ts:
             self.file_name = file_name
+            self.ts = ts
             try:
                 with open(self.file_name) as source:
                     self.source_lines = source.readlines()
@@ -838,7 +856,7 @@ location, if available. Optionally list the frame arguments and locals too."""
         lines = []
         for elem in data or []:
             name = elem.sym
-            value = elem.sym.value(frame)
+            value = to_string(elem.sym.value(frame))
             lines.append('{} {} = {}'.format(prefix, name, value))
         return lines
 
@@ -899,7 +917,7 @@ class History(Dashboard.Module):
         # fetch last entries
         for i in range(-self.limit + 1, 1):
             try:
-                value = gdb.history(i)
+                value = to_string(gdb.history(i))
                 value_id = ansi('$${}', R.style_low).format(abs(i))
                 line = '{} = {}'.format(value_id, value)
                 out.append(line)
@@ -1118,7 +1136,7 @@ class Expressions(Dashboard.Module):
         out = []
         for number, expression in sorted(self.table.items()):
             try:
-                value = gdb.parse_and_eval(expression)
+                value = to_string(gdb.parse_and_eval(expression))
             except gdb.error as e:
                 value = ansi(e, R.style_error)
             number = ansi(number, R.style_selected_2)
@@ -1200,7 +1218,7 @@ python Dashboard.start()
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 # ------------------------------------------------------------------------------
-# vi:syntax=python
+# vim: filetype=python
 # Local Variables:
 # mode: python
 # End:
