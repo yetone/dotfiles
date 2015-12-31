@@ -296,6 +296,7 @@ let g:ycm_filetype_specific_completion_to_disable.python = 1
 nnoremap <leader>h :YcmCompleter GoToDeclaration<cr>
 nnoremap <leader>? :YcmCompleter GoToDefinitionElseDeclaration<cr>
 nnoremap <leader>d :YcmCompleter GoToDefinition<cr>
+nnoremap <leader>i :YcmCompleter FixIt<cr>
 " }}}
 
 " neocomplete Setup {{{
