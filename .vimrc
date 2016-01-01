@@ -335,7 +335,10 @@ let g:quickrun_config = {
             \     'cmdopt': '-g -O0 -Wall -Wextra -pedantic -std=c++1z -lpthread'
             \   },
             \   'swift' : {
-            \     'command': 'swift'
+            \     'command': 'swiftc',
+            \     'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+            \     'tempfile': '%{tempname()}.swift',
+            \     'hook/sweep/files': ['%S:p:r'],
             \   }
             \ }
 " }}}
