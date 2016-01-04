@@ -413,6 +413,7 @@ let g:indent_guides_enable_on_vim_startup = 0
 " }}}
 
 " Goyo Setup {{{
+let g:goyo_width = 120
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 
