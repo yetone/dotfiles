@@ -46,6 +46,7 @@ Plug 'embear/vim-localvimrc'
 "Plug 'vim-pandoc/vim-pandoc'
 Plug 'pgdouyon/vim-evanesco'
 Plug 'idanarye/vim-vebugger'
+Plug 'junegunn/seoul256.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/syntastic'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
@@ -175,6 +176,7 @@ endif
 
 " Colorscheme {{{
 colors apprentice
+"colors seoul256-light
 hi! link Conceal Normal
 " }}}
 
@@ -440,7 +442,7 @@ let g:instant_markdown_autostart = 0
 " }}}
 
 " vim-operator-highlight Setup {{{
-"let g:ophigh_highlight_link_group = 'Keyword'
+let g:ophigh_highlight_link_group = 'Keyword'
 let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1, "html": 1, "css": 1, "scss": 1 }
 " }}}
 
