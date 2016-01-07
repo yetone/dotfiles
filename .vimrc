@@ -53,6 +53,7 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 "Plug 'edkolev/tmuxline.vim'
 Plug 'djoshea/vim-autoread'
 Plug 'racer-rust/vim-racer'
+Plug 'junegunn/vim-journal'
 Plug 'tikhomirov/vim-glsl'
 Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/vimshell.vim'
@@ -486,6 +487,10 @@ endfunction
 " Sayonara Setup {{{
 nnoremap <leader>q :Sayonara!<cr>
 " }}}
+
+" vim-journal Setup {{{
+let g:journal#dirs =  ['Notes', 'notes', 'journal.d']
+"}}}
 
 " TagBar Setup {{{
 nnoremap <leader>t :TagbarToggle<cr>
