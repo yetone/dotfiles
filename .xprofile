@@ -6,8 +6,8 @@ if [ -d "$HOME/.pyenv/bin" ]; then PATH=$HOME/.pyenv/bin:$PATH; fi
 if [ -d "$HOME/.rbenv/bin" ]; then PATH=$HOME/.rbenv/bin:$PATH; fi
 if [ -d "$HOME/.nodenv/bin" ]; then PATH=$HOME/.nodenv/bin:$PATH; fi
 if [ -d "$HOME/.cabal/bin" ]; then PATH=$HOME/.cabal/bin:$PATH; fi
-if [ -d "$HOME/.stack/programs/x86_64-linux/ghc-7.10.2/bin" ]; then
-  PATH=$HOME/.stack/programs/x86_64-linux/ghc-7.10.2/bin:$PATH
+if [ -d "$HOME/.stack/programs/x86_64-linux/ghc-7.10.3/bin" ]; then
+  PATH=$HOME/.stack/programs/x86_64-linux/ghc-7.10.3/bin:$PATH
 fi
 if [ -d "$HOME/.multirust/toolchains/nightly/cargo/bin" ]; then
   PATH=$HOME/.multirust/toolchains/nightly/cargo/bin:$PATH
