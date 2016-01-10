@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/home/francisco/.bin/mute-IEC958
+Exec=/home/francisco/.local/bin/mute-IEC958
 Hidden=false
 X-GNOME-Autostart-enabled=true
 Name=mute-IEC958

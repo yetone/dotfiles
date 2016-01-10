@@ -15,7 +15,7 @@ fi
 if [ -d "/usr/local/go/bin" ]; then PATH=/usr/local/go/bin:$PATH; fi
 if [ -d "$HOME/.go" ]; then export GOPATH=$HOME/.go; fi
 if [ -n "$GOPATH" ]; then PATH=$GOPATH/bin:$PATH; fi
-if [ -d "$HOME/.bin" ]; then PATH=$HOME/.bin:$PATH; fi
+if [ -d "$HOME/.local/bin" ]; then PATH=$HOME/.local/bin:$PATH; fi
 if which pyenv > /dev/null; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
