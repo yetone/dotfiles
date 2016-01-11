@@ -291,10 +291,6 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_semantic_triggers = { 'haskell' : ['.'] }
-if !exists('g:ycm_filetype_specific_completion_to_disable')
-    let g:ycm_filetype_specific_completion_to_disable = {}
-endif
-let g:ycm_filetype_specific_completion_to_disable.python = 1
 let g:ycm_rust_src_path = '/opt/src/rust/src'
 nnoremap <leader>h :YcmCompleter GoToDeclaration<cr>
 nnoremap <leader>? :YcmCompleter GoToDefinitionElseDeclaration<cr>
