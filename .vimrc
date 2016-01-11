@@ -493,6 +493,10 @@ nnoremap <leader>q :Sayonara!<cr>
 let g:journal#dirs =  ['Notes', 'notes', 'journal.d']
 "}}}
 
+" Ultimate-Colorscheme-Utility Setup {{{
+let g:ulti_color_default_keys = 0
+" }}}
+
 " TagBar Setup {{{
 nnoremap <leader>t :TagbarToggle<cr>
 
