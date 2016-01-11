@@ -52,7 +52,6 @@ Plug 'scrooloose/syntastic'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 "Plug 'edkolev/tmuxline.vim'
 Plug 'djoshea/vim-autoread'
-Plug 'racer-rust/vim-racer'
 Plug 'junegunn/vim-journal'
 Plug 'tikhomirov/vim-glsl'
 Plug 'Shougo/vimfiler.vim'
@@ -210,9 +209,7 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 
 " Rust
-let g:racer_cmd = "/opt/src/racer/target/release/racer"
 let g:rustfmt_autosave = 1
-let g:racer_experimental_completer = 1
 
 " Java
 au FileType java set omnifunc=javacomplete#Complete
@@ -293,11 +290,12 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_semantic_triggers = { 'haskell' : ['.'], 'rust' : ['::', '.'] }
+let g:ycm_semantic_triggers = { 'haskell' : ['.'] }
 if !exists('g:ycm_filetype_specific_completion_to_disable')
     let g:ycm_filetype_specific_completion_to_disable = {}
 endif
 let g:ycm_filetype_specific_completion_to_disable.python = 1
+let g:ycm_rust_src_path = '/opt/src/rust/src'
 nnoremap <leader>h :YcmCompleter GoToDeclaration<cr>
 nnoremap <leader>? :YcmCompleter GoToDefinitionElseDeclaration<cr>
 nnoremap <leader>d :YcmCompleter GoToDefinition<cr>
