@@ -190,9 +190,9 @@ let g:airline_powerline_fonts = 1
 " C++
 au BufNewFile,BufRead *
             \ if expand('%:e') =~ '^\(h\|hh\|hxx\|hpp\|ii\|ixx\|ipp\|inl\|txx\|tpp\|tpl\|cc\|cxx\|cpp\)$' |
-            \   if &ft != 'cpp'                                                                           |
-            \     set ft=cpp                                                                              |
-            \   endif                                                                                     |
+            \     if &ft != 'cpp'                                                                         |
+            \         set ft=cpp                                                                          |
+            \     endif                                                                                   |
             \ endif
 
 " Go
@@ -212,7 +212,7 @@ let g:rubycomplete_classes_in_global = 1
 let g:rustfmt_autosave = 1
 
 " Java
-au FileType java set omnifunc=javacomplete#Complete
+au FileType java setlocal omnifunc=javacomplete#Complete
 " }}}
 
 " format.vim Setup {{{
