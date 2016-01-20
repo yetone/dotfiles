@@ -72,6 +72,7 @@ Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 Plug 'romainl/Apprentice'
 Plug 'rust-lang/rust.vim'
+Plug 'bitc/vim-hdevtools'
 Plug 'godlygeek/tabular'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-abolish'
@@ -203,6 +204,7 @@ au FileType go setlocal noexpandtab
 " Haskell
 let g:hpaste_author = 'Francisco Lopes'
 let g:syntastic_haskell_ghc_mod_args = '-g-fno-warn-type-defaults -g-fno-warn-missing-signatures'
+let g:haskellmode_completion_ghc = 0
 au FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Ruby
@@ -329,6 +331,10 @@ let g:UltiSnipsExpandTrigger = '<c-a>'
 let g:quickrun_config = {
             \   '_': {
             \     'outputter/buffer/close_on_empty': 1
+            \   },
+            \   'haskell' : {
+            \     'command': 'stack',
+            \     'cmdopt': 'runghc --verbosity silent'
             \   },
             \   'cpp' : {
             \     'command': 'clang++',
