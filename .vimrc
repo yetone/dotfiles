@@ -12,6 +12,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugins {{{
+Plug 'maksimr/vim-jsbeautify', { 'dir': '~/.vim/plugged/vim-jsbeautify', 'do': 'git submodule update --init --recursive' }
 Plug 'davidhalter/jedi-vim' | Plug 'lambdalisue/vim-pyenv'
 Plug 'biskark/vim-ultimate-colorscheme-utility'
 Plug 'octol/vim-cpp-enhanced-highlight'
