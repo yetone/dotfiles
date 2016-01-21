@@ -1,0 +1,9 @@
+#!/bin/sh
+
+enabled=$(xinput --list-props bcm5974 | awk '/Device Enabled/{print $NF}')
+
+if [ "$enabled" = "1" ]; then
+    xinput disable bcm5974
+else
+    xinput enable bcm5974
+fi
