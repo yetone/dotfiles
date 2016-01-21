@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/francisco/.local/bin/on-terminal
+Hidden=false
+X-GNOME-Autostart-enabled=true
+Name=on-terminal
+Comment=Enforce behaviors on terminal focus

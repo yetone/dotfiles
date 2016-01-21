@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/home/francisco/.local/bin/disable-bcm5974-on-terminal
-Hidden=false
-X-GNOME-Autostart-enabled=true
-Name=disable-bcm5974-on-terminal
-Comment=disables macbook pro touchpad on terminal
