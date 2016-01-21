@@ -1,0 +1,18 @@
+#!/bin/sh
+
+while [ true ]
+do
+    window=`xdotool getwindowfocus getwindowname`
+    if [ "$window" = "Terminal" ]; then
+        if [ "$is_enabled" = true -o "$is_enabled" = "" ]; then
+            xinput disable bcm5974
+            is_enabled=false
+        fi
+    else
+        if [ "$is_enabled" = false -o "$is_enabled" = "" ]; then
+            xinput enable bcm5974
+            is_enabled=true
+        fi
+    fi
+    sleep 1
+done
