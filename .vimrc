@@ -164,7 +164,7 @@ set wildignore+=*.pyc
 " GUI Settings {{{
 if has('gui_running')
     " Set default GUI font
-    set guifont=monofur\ for\ Powerline\ 11
+    set guifont=monofur\ for\ Powerline\ 12
 
     " Remove scroll bars
     set guioptions-=L
