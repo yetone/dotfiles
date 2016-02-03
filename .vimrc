@@ -182,6 +182,8 @@ endif
 colors apprentice
 "colors seoul256-light
 hi! link Conceal Normal
+hi! Normal ctermbg=none
+hi! NonText ctermbg=none
 " }}}
 
 " Airline Setup {{{
