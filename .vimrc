@@ -182,8 +182,8 @@ endif
 colors apprentice
 "colors seoul256-light
 hi! link Conceal Normal
-hi! Normal ctermbg=none
-hi! NonText ctermbg=none
+hi! Normal ctermbg=NONE
+hi! NonText ctermbg=NONE
 " }}}
 
 " Airline Setup {{{
@@ -443,6 +443,8 @@ endfunction
 
 function! s:goyo_leave()
     silent !tmux set status on
+    hi! Normal ctermbg=NONE
+    hi! NonText ctermbg=NONE
 endfunction
 
 au! User GoyoEnter
