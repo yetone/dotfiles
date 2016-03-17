@@ -438,11 +438,15 @@ let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 
 function! s:goyo_enter()
-    silent !tmux set status off
+    if !has('gui_running')
+        silent !tmux set status off
+    endif
 endfunction
 
 function! s:goyo_leave()
-    silent !tmux set status on
+    if !has('gui_running')
+        silent !tmux set status on
+    endif
     hi! Normal ctermbg=NONE
     hi! NonText ctermbg=NONE
 endfunction
