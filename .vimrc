@@ -409,7 +409,7 @@ endif
 " }}}
 
 " vim-pad Setup {{{
-let g:pad#dir = '~/Dropbox/Notes'
+let g:pad#dir = '~/Documents/Dropbox/Notes'
 let g:pad#set_mappings = 0
 let g:pad#open_in_split = 0
 " }}}
