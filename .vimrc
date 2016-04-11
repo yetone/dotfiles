@@ -232,7 +232,7 @@ let g:format_HTMLAdditionalCSS = '
 \        url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.ttf") format("truetype"),
 \        url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.svg") format("svg");
 \ }
-\ body { font-family: "monofur", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, monospace; font-size:12pt; -webkit-font-smoothing: antialiased; }'
+\ body { font-family: "monofur", "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, monospace; font-size:11.6pt; -webkit-font-smoothing: antialiased; }'
 " }}}
 
 " Syntastic Setup {{{
@@ -642,7 +642,7 @@ command! -nargs=0 Messages :redir => bufout | silent :messages | redir END | new
 " Gist it to bl.ocks.org {{{
 let g:gist_clip_command = 'xclip -selection clipboard'
 command! -range=% Blocks
-            \ <line1>,<line2>Format format | f index.html | exe 'Gist -a' | bd!                                       |
-            \ let @+ = 'http://bl.ocks.org/anonymous/raw/' . matchstr(@+, 'https://gist.github.com/\zs\w\+\ze') . '/' |
+            \ <line1>,<line2>Format format | f index.html | exe 'Gist! -p' | bd!                                    |
+            \ let @+ = 'http://bl.ocks.org/oblitum/raw/' . matchstr(@+, 'https://gist.github.com/\zs\w\+\ze') . '/' |
             \ let @+ = bitly#shorten(@+).url | redraw | echomsg 'Done: ' . @+ | setlocal nomodified
 " }}}
