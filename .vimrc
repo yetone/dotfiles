@@ -14,7 +14,6 @@ call plug#begin('~/.vim/plugged')
 " Plugins {{{
 Plug 'maksimr/vim-jsbeautify', { 'dir': '~/.vim/plugged/vim-jsbeautify', 'do': 'git submodule update --init --recursive' }
 Plug 'davidhalter/jedi-vim' | Plug 'lambdalisue/vim-pyenv'
-Plug 'biskark/vim-ultimate-colorscheme-utility'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Valloric/vim-operator-highlight'
 Plug 'pbrisbin/vim-syntax-shakespeare'
@@ -32,8 +31,10 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'guns/xterm-color-table.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'chrisbra/vim-diff-enhanced'
 Plug 'suan/vim-instant-markdown'
 Plug 'terryma/vim-expand-region'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'vim-airline/vim-airline'
@@ -61,7 +62,6 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/vimshell.vim'
 Plug 'eagletmt/ghcmod-vim'
-Plug 'raichoo/haskell-vim'
 Plug 'tpope/vim-obsession'
 Plug 'thinca/vim-quickrun'
 Plug 'Slava/vim-spacebars'
@@ -127,7 +127,6 @@ runtime! plugin/sensible.vim
 
 " General Settings {{{
 let mapleader = ' '         " changes leader key
-set regexpengine=1          " set old regexp engine
 set noswapfile              " no swap files
 set hidden                  " hide buffer without notice
 set hlsearch                " highlight the last searched term
