@@ -1,4 +1,5 @@
 set disassembly-flavor intel
+dashboard -style syntax_highlighting "algol_nu"
 
 define hookpost-up
 dashboard
