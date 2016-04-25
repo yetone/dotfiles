@@ -298,6 +298,11 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_semantic_triggers = { 'haskell' : ['.'] }
 let g:ycm_rust_src_path = '/opt/src/rust/src'
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'gitcommit': 1,
+      \ 'html': 1,
+      \ 'css': 1
+      \}
 nnoremap <leader>h :YcmCompleter GoToDeclaration<cr>
 nnoremap <leader>? :YcmCompleter GoToDefinitionElseDeclaration<cr>
 nnoremap <leader>d :YcmCompleter GoToDefinition<cr>
@@ -371,6 +376,7 @@ au FileType vimfiler nmap <silent><buffer> <2-LeftMouse> <Plug>(vimfiler_smart_l
 " CtrlP Setup {{{
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 " }}}
 
@@ -511,10 +517,6 @@ nnoremap <leader>q :Sayonara!<cr>
 " vim-journal Setup {{{
 let g:journal#dirs =  ['Notes', 'notes', 'journal.d']
 "}}}
-
-" Ultimate-Colorscheme-Utility Setup {{{
-let g:ulti_color_default_keys = 0
-" }}}
 
 " TagBar Setup {{{
 nnoremap <leader>t :TagbarToggle<cr>
