@@ -1,7 +1,1 @@
-[Desktop Entry]
-Type=Application
-Terminal=false
-Name=Libinput Gestures
-Exec=libinput-gestures
-Comment=Background application to intercept and action libinput gestures from touchpad.
-Categories=GNOME;GTK;System;
+/home/francisco/.local/share/applications/libinput-gestures.desktop
