@@ -82,7 +82,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-abolish'
 Plug 'peterhoeg/vim-qml'
 "Plug 'gilligan/vim-lldb'
-"Plug 'jeaye/color_coded', { 'do': 'cmake . && make && make install' }
+"Plug 'jeaye/color_coded', { 'do': 'cmake . && make -j4 && make install' }
 Plug 'oblitum/formatvim'
 Plug 'junegunn/goyo.vim'
 Plug 'ogier/guessindent'
@@ -107,7 +107,7 @@ Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
 Plug 'tpope/vim-haml'
 Plug 'fidian/hexmode'
-Plug 'Shougo/vimproc', { 'do': 'make' }
+Plug 'Shougo/vimproc', { 'do': 'make -j4' }
 Plug 'mattn/gist-vim'
 Plug 'oblitum/frawor'
 Plug 'nicwest/QQ.vim'
