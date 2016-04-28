@@ -25,7 +25,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'editorconfig/editorconfig-vim'
-"Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'powerman/vim-plugin-AnsiEsc'
@@ -219,6 +219,9 @@ let g:rustfmt_autosave = 1
 
 " Java
 au FileType java setlocal omnifunc=javacomplete#Complete
+
+" Mmark
+au BufNewFile,BufRead *.mmark set filetype=pandoc
 " }}}
 
 " format.vim Setup {{{
@@ -470,7 +473,7 @@ let g:instant_markdown_autostart = 0
 
 " vim-operator-highlight Setup {{{
 let g:ophigh_highlight_link_group = 'Keyword'
-let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1, "html": 1, "css": 1, "scss": 1 }
+let g:ophigh_filetypes_to_ignore = { "haskell": 1, "javascript": 1, "html": 1, "css": 1, "scss": 1, "pandoc": 1 }
 " }}}
 
 " tern_for_vim Setup {{{
