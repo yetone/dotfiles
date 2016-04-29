@@ -229,7 +229,7 @@ let g:format_HTMLAdditionalCSS = '
 \ @font-face {
 \   font-family: "monofur";
 \   src: url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.eot");
-\   src: local("☺"),
+\   src: local("monofur for Powerline"),
 \        url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.woff") format("woff"),
 \        url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.ttf") format("truetype"),
 \        url("http://s3.amazonaws.com/oblitum-fonts/monofur-webfont.svg") format("svg");
