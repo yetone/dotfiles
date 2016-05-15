@@ -10,7 +10,7 @@ flags = [
 '-stdlib=libc++',
 '-isystem', '/usr/include/c++/v1',
 '-isystem', '/usr/local/include',
-'-isystem', '/usr/lib/clang/3.7.1/include',
+'-isystem', '/usr/lib/clang/3.8.0/include',
 '-isystem', '/usr/include',
 ]
 
