@@ -174,6 +174,9 @@ if has('gui_running')
 
     " Disable toolbar
     set guioptions=-t
+
+    " Initial window dimensions
+    set lines=47 columns=80
 endif
 " }}}
 
