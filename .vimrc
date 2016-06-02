@@ -25,6 +25,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'xuhdev/vim-latex-live-preview'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'terryma/vim-multiple-cursors'
@@ -523,6 +524,10 @@ nnoremap <leader>q :Sayonara!<cr>
 
 " vim-journal Setup {{{
 let g:journal#dirs =  ['Notes', 'notes', 'journal.d']
+"}}}
+
+" vim-latex-live-preview Setup {{{
+let g:livepreview_previewer = 'zathura'
 "}}}
 
 " TagBar Setup {{{
