@@ -68,7 +68,6 @@ Plug 'thinca/vim-quickrun'
 Plug 'Slava/vim-spacebars'
 Plug 'groenewege/vim-less'
 Plug 'hsanson/vim-android'
-Plug 'lambdatoast/elm.vim'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
@@ -104,6 +103,7 @@ Plug 'mileszs/ack.vim'
 Plug 'drn/zoomwin-vim'
 Plug 'xolox/vim-shell'
 Plug 'keith/swift.vim'
+Plug 'elmcast/elm-vim'
 Plug 'xolox/vim-misc'
 Plug 'vim-jp/cpp-vim'
 Plug 'tpope/vim-haml'
@@ -227,6 +227,9 @@ au FileType java setlocal omnifunc=javacomplete#Complete
 
 " Mmark
 au BufNewFile,BufRead *.mmark set filetype=pandoc
+
+" Elm
+let g:elm_setup_keybindings = 0
 " }}}
 
 " format.vim Setup {{{
@@ -287,6 +290,9 @@ au VimEnter,ColorScheme * exec 'hi! SyntasticWarningSign guifg=yellow ctermfg=ye
 au VimEnter,ColorScheme * exec 'hi! SyntasticError ' . s:getbg('SyntasticErrorLine')
 au VimEnter,ColorScheme * exec 'hi! SyntasticWarning ' . s:getbg('SyntasticWarningLine')
 
+let g:syntastic_auto_loc_list = 2
+let g:elm_syntastic_show_warnings = 1
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["go", "html"] }
 " }}}
 
@@ -305,7 +311,7 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_semantic_triggers = { 'haskell' : ['.'] }
+let g:ycm_semantic_triggers = { 'haskell' : ['.'], 'elm' : ['.'] }
 let g:ycm_rust_src_path = '/opt/src/rust/src'
 let g:ycm_filetype_specific_completion_to_disable = {
       \ 'gitcommit': 1,
